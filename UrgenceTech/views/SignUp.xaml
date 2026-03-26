@@ -1,0 +1,33 @@
+﻿<Page x:Class="UrgenceTech.Views.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UrgenceTech.Views"
+        mc:Ignorable="d"
+        Title="SignUp"
+        Background="#FF4F6FDE">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="2066" Height="949">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="767,0,0,0">
+            <Image Source="/logoUrgenceTech.png" Stretch="Fill" Width="350" Height="250"/>
+            <Border Background="White" BorderBrush="Black" BorderThickness="3" Width="500" Height="600">
+                <StackPanel>
+                    <Label Content="&#xA;&#xA;Créer un compte" Width="158" FontSize="20" RenderTransformOrigin="0.444,0.185" Height="100" Margin="30"/>
+                    <TextBox x:Name="Email" Width="200" Height="40" BorderBrush="Black" Text="Email" Margin="15" GotFocus="RetirerTexte" LostFocus="AjouterTexte" Tag="Email"/>
+                    <TextBox x:Name="MotPasse" Width="200" Height="40" BorderBrush="Black" Text="Mot de passe" Margin="15" GotFocus="RetirerTexte" LostFocus="AjouterTexte" Tag="Mot de passe"/>
+                    <TextBox x:Name="ConfirmerMotPasse" Width="200" Height="40" BorderBrush="Black" Text="Confirmer mot de passe" Margin="15" GotFocus="RetirerTexte" LostFocus="AjouterTexte" Tag="Confirmer mot de passe"/>
+                    <TextBox x:Name="NomComplet" Width="200" Height="40" BorderBrush="Black" Text="Nom Complet" Margin="15" GotFocus="RetirerTexte" LostFocus="AjouterTexte" Tag="Nom Complet"/>
+                    <Button x:Name="CreerCompteBTN" Content="Créer un compte" Width="200" Height="40" Background="#FF5070DE" Foreground="White" Click="CreerCompteBTN_Click" Margin="15"/>
+                    <TextBlock x:Name="MessageErreurCreationCompte" Foreground="Red" Margin="5"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
