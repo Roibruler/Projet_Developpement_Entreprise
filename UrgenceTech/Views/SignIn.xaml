@@ -13,14 +13,14 @@
             <StackPanel>
                 <Label Content="Connexion" Width="127" FontSize="20" RenderTransformOrigin="0.444,0.185" Height="38" Margin="30" FontWeight="Bold"/>
                 <Label Content="Courriel" Width="62" FontSize="12" RenderTransformOrigin="0.444,0.185" Height="38" HorizontalAlignment="Left" Margin="140,0,0,-15"/>
-                <TextBox x:Name="Email" Width="200" Height="30" BorderBrush="Black" Margin="15" Tag="Email"/>
+                <TextBox x:Name="Email" Width="200" Height="22" BorderBrush="Black" Margin="15" Tag="Email"/>
                 <Label Content="Mot de passe" Width="90" FontSize="12" RenderTransformOrigin="0.444,0.185" Height="38" HorizontalAlignment="Left" Margin="140,0,0,-15"/>
-                <TextBox x:Name="MotPasse" Width="200" Height="30" BorderBrush="Black" Margin="15" Tag="Mot de passe"/>
+                <PasswordBox x:Name="MotPasse" Width="200" Height="22" BorderBrush="Black" Margin="15" Tag="Mot de passe"/>
                 <StackPanel Orientation="Horizontal" Width="264">
                     <Button x:Name="SignInBtn" Content="Connecter" Width="96" Height="40" Background="#FF5070DE" Foreground="White" Click="SignInBtn_Click" Margin="15" FontWeight="Bold"/>
                     <Button x:Name="GoToSignUpBtn" Content="Créer un compte" Width="117" Height="40" Background="#FF5070DE" Foreground="White" Click="GoToSignUpBtn_Click" FontWeight="Bold"/>
                 </StackPanel>
-                <TextBlock x:Name="MessageErreurCreationCompte" Foreground="Red" Margin="5"/>
+                <TextBlock x:Name="MessageErreur" Foreground="Red" Margin="5"/>
             </StackPanel>
         </Border>
     </StackPanel>
