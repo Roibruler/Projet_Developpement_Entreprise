@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UrgenceTech.Views
 {
-    internal class Register
+    public class Register
     {
     }
 }
