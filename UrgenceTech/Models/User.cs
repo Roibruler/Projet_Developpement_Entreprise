@@ -12,7 +12,7 @@ namespace UrgenceTech.Models
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Courriel { get; set; }
-        public string MotDePasseHash { get; set; }
+        public string MotDePasse { get; set; }
         public string Role { get; set; } = "Patient";
         public DateTime DateCreation { get; set; } = DateTime.Now;
         public bool EstActif { get; set; } = true;
