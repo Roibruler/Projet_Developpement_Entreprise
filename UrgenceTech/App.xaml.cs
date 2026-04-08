@@ -18,16 +18,13 @@ namespace UrgenceTech
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
             ShutdownMode = ShutdownMode.OnLastWindowClose;
-        }
-    }
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            NavigationWindow window = new NavigationWindow();
-            window.Source = new Uri("views/SignUp.xaml", UriKind.Relative);
+            NavigationWindow window = new()
+            {
+                Source = new Uri("views/SignIn.xaml", UriKind.Relative)
+            };
             window.Show();
         }
 

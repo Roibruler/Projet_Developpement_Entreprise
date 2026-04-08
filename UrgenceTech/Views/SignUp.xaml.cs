@@ -1,105 +1,135 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace UrgenceTech.Views
 {
+    /// <summary>
+    /// Logique d'interaction pour SignUp.xaml
+    /// </summary>
     public partial class SignUp : Page
     {
-        // (base de donne comme test pour les emails existants pour plustard faut le delete apres qu'on a une BD)
-        private static List<string> FakeDatabaseEmails = new List<string>()
-        {
-            "test@gmail.com",
-            "admin@urgence.com"
-        };
-
         public SignUp()
         {
             InitializeComponent();
         }
 
-        private void CreateAccount_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MessageErreur.Text = string.Empty;
 
-            if (!IsEmailValid())
+        }
+
+        private void Window_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+
+        }
+
+        private void CreerCompteBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email" || string.IsNullOrWhiteSpace(MotPasse.Text) || MotPasse.Text == "Mot de passe" || string.IsNullOrWhiteSpace(ConfirmerMotPasse.Text) || ConfirmerMotPasse.Text == "Confirmer mot de passe" || string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email" || string.IsNullOrWhiteSpace(NomComplet.Text) || NomComplet.Text == "Nom Complet")
+            {
+                MessageErreurCreationCompte.Text = "Les champs: " + "\n" + "Email" + "\n" + "Mot de passe" + "\n" + "Confirmer mot de passe" + "\n" + "Nom complet ne sont pas remplie";
                 return;
-
-            if (!IsPasswordValid())
-                return;
-
-            if (EmailExists())
+            }
+            if (string.IsNullOrWhiteSpace(ConfirmerMotPasse.Text) || ConfirmerMotPasse.Text == "Confirmer mot de passe" || string.IsNullOrWhiteSpace(NomComplet.Text) || NomComplet.Text == "Nom Complet")
             {
-                MessageErreur.Text =
-                    "Cet email existe déjà.\n" +
-                    "Veuillez vous connecter.\n" +
-                    "Ou utilisez 'Mot de passe oublié ?'";
+                MessageErreurCreationCompte.Text = "Les champs Confirmer mot de passe et Nom complet ne sont pas remplie";
                 return;
             }
-
-            FakeDatabaseEmails.Add(Email.Text);
-
-            MessageBox.Show("Compte créé avec succès !");
-
-            NavigationService.Navigate(new SignUp());
-        }
-
-        private bool EmailExists()
-        {
-            return FakeDatabaseEmails.Contains(Email.Text.ToLower());
-        }
-
-        private bool IsEmailValid()
-        {
-            if (string.IsNullOrEmpty(Email.Text) || !IsValidEmailFormat())
+            if (string.IsNullOrWhiteSpace(MotPasse.Text) || MotPasse.Text == "Mot de passe" || string.IsNullOrWhiteSpace(NomComplet.Text) || NomComplet.Text == "Nom Complet")
             {
-                MessageErreur.Text = "Le courriel est invalide.";
-                return false;
+                MessageErreurCreationCompte.Text = "Les champs Mot de passe et Nom Complet ne sont pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(MotPasse.Text) || MotPasse.Text == "Mot de passe" || string.IsNullOrWhiteSpace(ConfirmerMotPasse.Text) || ConfirmerMotPasse.Text == "Confirmer mot de passe")
+            {
+                MessageErreurCreationCompte.Text = "Les champs Mot de passe et Confirmer mot de passe ne sont pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email" || string.IsNullOrWhiteSpace(NomComplet.Text) || NomComplet.Text == "Nom Complet")
+            {
+                MessageErreurCreationCompte.Text = "Les champs Email et Nom complet ne sont pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email" || string.IsNullOrWhiteSpace(ConfirmerMotPasse.Text) || ConfirmerMotPasse.Text == "Confirmer mot de passe")
+            {
+                MessageErreurCreationCompte.Text = "Les champs Email et Confimrer mot de passe ne sont pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email" || string.IsNullOrWhiteSpace(MotPasse.Text) || MotPasse.Text == "Mot de passe")
+            {
+                MessageErreurCreationCompte.Text = "Les champs Email et Mot de passe ne sont pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(NomComplet.Text) || NomComplet.Text == "Nom Complet")
+            {
+                MessageErreurCreationCompte.Text = "Le champs Nom complet n'est pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(ConfirmerMotPasse.Text) || ConfirmerMotPasse.Text == "Confirmer mot de passe")
+            {
+                MessageErreurCreationCompte.Text = "Le champs Confirmer mot de passe n'est pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(MotPasse.Text) || MotPasse.Text == "Mot de passe")
+            {
+                MessageErreurCreationCompte.Text = "Le champs Mot de passe n'est pas remplie";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Email.Text) || Email.Text == "Email")
+            {
+                MessageErreurCreationCompte.Text = "Le champs Email n'est pas remplie";
+                return;
             }
 
-            if (Email.Text.Length > 100)
+            MessageErreurCreationCompte.Text = string.Empty;
+
+            MainWindow main = new MainWindow();
+            main.Show();
+
+            Window.GetWindow(this).Close();
+        }
+
+        private void RetirerTexte(object sender, RoutedEventArgs e)
+        {
+            TextBox texbox = (TextBox)sender;
+
+            if (texbox.Tag as string == "Email")
             {
-                MessageErreur.Text = "Le courriel est trop long.";
-                return false;
+                texbox.Text = "";
             }
-
-            return true;
-        }
-
-        private bool IsPasswordValid()
-        {
-            if (string.IsNullOrEmpty(MotPasse.Password))
+            else if (texbox.Tag as string == "Mot de passe")
             {
-                MessageErreur.Text = "Le mot de passe est invalide.";
-                return false;
+                texbox.Text = "";
             }
-
-            if (MotPasse.Password.Length > 50)
+            else if (texbox.Tag as string == "Confirmer mot de passe")
             {
-                MessageErreur.Text = "Le mot de passe est trop long.";
-                return false;
+                texbox.Text = "";
             }
-
-            return true;
+            else if (texbox.Tag as string == "Nom Complet")
+            {
+                texbox.Text = "";
+            }
         }
 
-        private bool IsValidEmailFormat()
+        private void AjouterTexte(object sender, RoutedEventArgs e)
         {
-            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
-            return Regex.IsMatch(Email.Text, pattern, RegexOptions.IgnoreCase);
-        }
+            TextBox textbox = (TextBox)sender;
 
-        private void GoToSignUp_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SignUp());
-        }
-
-        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Fonctionnalité à venir.");
+            if (string.IsNullOrWhiteSpace(textbox.Text))
+            {
+                textbox.Text = textbox.Tag as string;
+            }
         }
     }
 }
