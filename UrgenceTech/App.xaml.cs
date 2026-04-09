@@ -20,12 +20,6 @@ namespace UrgenceTech
             base.OnStartup(e);
 
             ShutdownMode = ShutdownMode.OnLastWindowClose;
-
-            NavigationWindow window = new()
-            {
-                Source = new Uri("views/SignIn.xaml", UriKind.Relative)
-            };
-            window.Show();
         }
 
         internal void Show()

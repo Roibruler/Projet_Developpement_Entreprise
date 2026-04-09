@@ -45,7 +45,7 @@ namespace UrgenceTech.Views
 
         private void GoToSignUpBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SignUp());
         }
 
         private bool IsEmailValid()
