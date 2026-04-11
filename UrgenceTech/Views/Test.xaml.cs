@@ -1,4 +1,9 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,17 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UrgenceTech.Views;
 
-namespace UrgenceTech
+namespace UrgenceTech.Views
 {
-
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Logique d'interaction pour Test.xaml
+    /// </summary>
+    public partial class Test : Page
     {
-        public MainWindow()
+        public Test()
         {
             InitializeComponent();
-            MainFrame.Navigate(new SignIn());
         }
     }
 }
