@@ -8,7 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Test"
       Background="Transparent">
-      <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
-        <Label Content="Test" Width="127" FontSize="50" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </StackPanel>
+
+    <Grid MouseMove="OnUserActivity"
+          KeyDown="OnUserActivity">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <Label Content="Test" Width="127" FontSize="50" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <TextBox x:Name="StatusText"
+   TextAlignment="Center" Margin="478,296,0,26" RenderTransformOrigin="0.52,0.484"/>
+
+        <Button Content="Déconnexion" Margin="352,350,352,80" Click="OnLogout" />
+    </Grid>
 </Page>

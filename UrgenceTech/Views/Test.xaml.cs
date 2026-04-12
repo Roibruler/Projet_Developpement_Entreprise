@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
@@ -21,9 +22,49 @@ namespace UrgenceTech.Views
     /// </summary>
     public partial class Test : Page
     {
+
+        private TestViewModels test = new TestViewModels();
+
         public Test()
         {
             InitializeComponent();
+
+
+            test.StatusChanged += () => StatusText.Text = test.Statut;
+            test.SessionExpired += OnSessionExpired;
+            test.LogoutRequested += OnLogout;
+
+            StatusText.Text = test.Statut;
+
+
+        }
+
+        private void OnUserActivity(object sender, RoutedEventArgs e)
+        {
+            test.UserActivity();
+        }
+
+        private void OnLogout(object sender, RoutedEventArgs e)
+        {
+            test.Logout();
+        }
+
+        private void OnSessionExpired()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show("Votre session a expiré.");
+                Window.GetWindow(this).Close();
+            });
+        }
+
+        private void OnLogout()
+        {
+            MessageBox.Show("Déconnexion réussie.");
+            Window.GetWindow(this).Close();
+
+
         }
     }
+
 }
