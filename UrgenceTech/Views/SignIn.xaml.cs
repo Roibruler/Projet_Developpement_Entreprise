@@ -26,8 +26,11 @@ namespace UrgenceTech.Views
             InitializeComponent();
         }
 
+
         private void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
+
+            ErreurBorder.Visibility = Visibility.Collapsed;
             MessageErreur.Text = string.Empty;
 
             if (!IsEmailValid()) 
@@ -48,17 +51,30 @@ namespace UrgenceTech.Views
             NavigationService.Navigate(new SignUp());
         }
 
+        // Affiche la boîte rouge avec le message d'erreur
+        private void AfficherErreur(string message)
+        {
+            MessageErreur.Text = message;
+            ErreurBorder.Visibility = Visibility.Visible;
+        }
+
         private bool IsEmailValid()
         {
-            if (string.IsNullOrEmpty(Email.Text) || !IsValidEmailFormat())
+            if (string.IsNullOrEmpty(Email.Text))
             {
-                MessageErreur.Text = "Le courriel est invalide.";
+                AfficherErreur("Veuillez entrer votre courriel.");
+                return false;
+            }
+
+            if (!IsValidEmailFormat())
+            {
+                AfficherErreur("Format d'email invalide.");
                 return false;
             }
 
             if (Email.Text.Length > 100)
             {
-                MessageErreur.Text = "Le courriel est trop long.";
+                AfficherErreur("Le courriel est trop long.");
                 return false;
             }
 
@@ -69,13 +85,19 @@ namespace UrgenceTech.Views
         {
             if (string.IsNullOrEmpty(MotPasse.Password))
             {
-                MessageErreur.Text = "Le mot de passe est invalide.";
+                AfficherErreur("Veuillez entrer votre mot de passe.");
+                return false;
+            }
+
+            if (MotPasse.Password.Length < 8)
+            {
+                AfficherErreur("Le mot de passe doit contenir au moins 8 caractères.");
                 return false;
             }
 
             if (MotPasse.Password.Length > 50)
             {
-                MessageErreur.Text = "Le mot de passe est trop long.";
+                AfficherErreur("Le mot de passe est trop long.");
                 return false;
             }
 
@@ -87,5 +109,7 @@ namespace UrgenceTech.Views
             string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
             return Regex.IsMatch(Email.Text, pattern, RegexOptions.IgnoreCase);
         }
+
+        
     }
 }
