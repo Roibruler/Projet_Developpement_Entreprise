@@ -7,15 +7,15 @@ using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
-using Urgence_tech.Data;
-using Urgence_tech.Views;
+using UrgenceTech.Data;
+using UrgenceTech.Views;
 
-namespace Urgence_tech.ViewModels
+namespace UrgenceTech.ViewModels
 {
     internal partial class LoginViewModels : ObservableObject
     {
         [ObservableProperty]
-        private string courriel = string.Empty;
+        private string? courriel = string.Empty;
 
         [ObservableProperty]
         private string motDePasse = string.Empty;
@@ -30,7 +30,7 @@ namespace Urgence_tech.ViewModels
             MessageErreur = string.Empty;
 
             //Veriifer si les champs sont vides
-            if (string.IsNullOrEmpty(courriel) || string.IsNullOrEmpty(motDePasse)) 
+            if (string.IsNullOrEmpty(Courriel) || string.IsNullOrEmpty(MotDePasse)) 
             {
                 MessageErreur = "Veuillez remplir tous les champs.";
                 return;
@@ -40,8 +40,8 @@ namespace Urgence_tech.ViewModels
             using var context = new AppDbContext();
 
             var utilisateur = await context.Utilisateurs
-                .FirstOrDefaultAsync(u => u.Courriel == courriel
-                                    && u.MotDePasse == motDePasse
+                .FirstOrDefaultAsync(u => u.Courriel == Courriel
+                                    && u.MotDePasse == MotDePasse
                                     && u.Status == true);
 
             

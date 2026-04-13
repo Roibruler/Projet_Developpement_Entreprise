@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Urgence_tech.Models;
+using UrgenceTech.Models;
 
-namespace Urgence_tech.Data
+namespace UrgenceTech.Data
 {
     internal class AppDbContext : DbContext
     {

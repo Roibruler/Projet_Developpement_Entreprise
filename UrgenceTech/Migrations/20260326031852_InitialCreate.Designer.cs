@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Urgence_tech.Data;
+using UrgenceTech.Data;
 
 #nullable disable
 
@@ -19,7 +19,7 @@ namespace UrgenceTech.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.25");
 
-            modelBuilder.Entity("Urgence_tech.Models.Utilisateur", b =>
+            modelBuilder.Entity("UrgenceTech.Models.Utilisateur", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()

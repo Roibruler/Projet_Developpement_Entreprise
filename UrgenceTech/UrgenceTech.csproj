@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image1.png" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.25" />
@@ -19,3 +24,4 @@
   </ItemGroup>
 
 </Project>
+

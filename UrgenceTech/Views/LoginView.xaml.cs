@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Urgence_tech.ViewModels;
+using UrgenceTech.ViewModels;
 
-namespace Urgence_tech.Views
+namespace UrgenceTech.Views
 {
     public partial class LoginView : Window
     {
