@@ -27,5 +27,11 @@ namespace UrgenceTech.Models
         [Required]
         [MaxLength(100)]
         public string? Role { get; set; }
+
+        // Nombre de tentatives de connexion échouées
+        public int TentativesEchouees { get; set; } = 0;
+
+        // Date/heure du verrouillage du compte
+        public DateTime? DateVerrouillage { get; set; }
     }
 }
