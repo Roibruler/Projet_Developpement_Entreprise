@@ -1,8 +1,8 @@
-﻿################################################################################
-# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
-################################################################################
-
-/UrgenceTech/.vs/UrgenceTech.slnx/v18
-/UrgenceTech/.vs/UrgenceTech.slnx/FileContentIndex
+﻿/UrgenceTech/.vs/
 /UrgenceTech/bin/Debug/net8.0-windows
 /UrgenceTech/obj
+
+.vs/
+UrgenceTech/.vs/
+/UrgenceTech/.vs
+/UrgenceTech/.vs/UrgenceTech.slnx/DesignTimeBuild/.dtbcache.v2
