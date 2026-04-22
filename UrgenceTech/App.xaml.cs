@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 using UrgenceTech.Views;
+using Microsoft.EntityFrameworkCore;
+using UrgenceTech.Data;
 
 namespace UrgenceTech
 {
-    /// <summary>
-    /// Logique d'interaction pour App.xaml
-    /// </summary>
+
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
@@ -20,6 +20,10 @@ namespace UrgenceTech
             base.OnStartup(e);
 
             ShutdownMode = ShutdownMode.OnLastWindowClose;
+
+            // Applique les migrations et crée la base de données si elle n'existe pas
+            using var context = new AppDbContext();
+            context.Database.Migrate();
         }
 
         internal void Show()
