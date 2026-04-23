@@ -20,7 +20,27 @@
                     <Button x:Name="SignInBtn" Content="Connecter" Width="96" Height="40" Background="#FF5070DE" Foreground="White" Click="SignInBtn_Click" Margin="15" FontWeight="Bold"/>
                     <Button x:Name="GoToSignUpBtn" Content="Créer un compte" Width="117" Height="40" Background="#FF5070DE" Foreground="White" Click="GoToSignUpBtn_Click" FontWeight="Bold"/>
                 </StackPanel>
-                <TextBlock x:Name="MessageErreur" Foreground="Red" Margin="5"/>
+                <!-- Boîte d'erreur avec icône -->
+                <Border x:Name="ErreurBorder"
+                        Background="#FFEBEE"
+                        BorderBrush="#F44336"
+                        BorderThickness="1"
+                        CornerRadius="4"
+                        Padding="10"
+                        Margin="15,5,15,5"
+                        Visibility="Collapsed">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="⚠️"
+                                   FontSize="14"
+                                   Margin="0,0,8,0"
+                                   VerticalAlignment="Center"/>
+                                        <TextBlock x:Name="MessageErreur"
+                                   Foreground="#F44336"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
             </StackPanel>
         </Border>
     </StackPanel>
