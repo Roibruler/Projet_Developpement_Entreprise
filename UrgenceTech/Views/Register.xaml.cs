@@ -47,7 +47,7 @@ namespace UrgenceTech.Views
             }
 
             // --- Tentative de création de compte ---
-            var utilisateur = AuthService.CreerCompte(nom, prenom, courriel, motDePasse);
+            var utilisateur = AuthService.CreerCompte(nom, prenom, courriel, motDePasse, nouvelUtilisateur);
 
             if (utilisateur == null)
             {
