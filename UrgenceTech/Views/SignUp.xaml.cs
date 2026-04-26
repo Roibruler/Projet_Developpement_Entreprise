@@ -20,9 +20,13 @@ namespace UrgenceTech.Views
     /// </summary>
     public partial class SignUp : Page
     {
+        private CritèreViewModel _criteriaViewModel;
+
         public SignUp()
         {
             InitializeComponent();
+            _criteriaViewModel = new CritèreViewModel();
+            DataContext = _criteriaViewModel;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -93,6 +97,20 @@ namespace UrgenceTech.Views
                 return;
             }
 
+            // Check if all password criteria are met
+            if (!_criteriaViewModel.IsPasswordValid)
+            {
+                MessageErreurCreationCompte.Text = "Le mot de passe ne respecte pas tous les critères";
+                return;
+            }
+
+            // Check if passwords match
+            if (MotPasse.Text != ConfirmerMotPasse.Text)
+            {
+                MessageErreurCreationCompte.Text = "Les mots de passe ne correspondent pas";
+                return;
+            }
+
             MessageErreurCreationCompte.Text = string.Empty;
 
             MainWindow main = new MainWindow();
@@ -122,14 +140,21 @@ namespace UrgenceTech.Views
                 texbox.Text = "";
             }
 
+            // si est sur le textbox motpasse - visibilité = peut voir 
+
             TextBox MotPasse = sender as TextBox;
 
 
-            if (texbox.Name == "MotPasse")
+            if (texbox.Name == "MotPasse") 
+            {
                 CriètreMotDePasse.Visibility = Visibility.Visible;
+            } 
+            
 
         }
 
+
+        // si n'est pas sur le textbox motpasse - visibilité = peut pas voir 
         private void AjouterTexte(object sender, RoutedEventArgs e)
         {
             TextBox textbox = (TextBox)sender;
@@ -140,7 +165,29 @@ namespace UrgenceTech.Views
             }
 
             if (textbox.Name == "MotPasse")
+            {
                 CriètreMotDePasse.Visibility = Visibility.Collapsed;
+            }
+            
+        }
+
+        //update les critères du mot de passe
+        private void MotPasse_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox motPasse = sender as TextBox;
+
+            if (motPasse != null && motPasse.Name == "MotPasse")
+            {
+                
+                if (motPasse.Text != "Mot de passe" && motPasse.Text != "")
+                {
+                    _criteriaViewModel.MotDePasse = motPasse.Text;
+                }
+                else if (motPasse.Text == "")
+                {
+                    _criteriaViewModel.MotDePasse = "";
+                }
+            }
         }
 
 

@@ -16,8 +16,8 @@
         </StackPanel>
 
         <TextBox x:Name="StatusText"
-   TextAlignment="Center" Margin="478,296,0,26" RenderTransformOrigin="0.52,0.484"/>
+   TextAlignment="Center" Margin="588,35,0,352" RenderTransformOrigin="0.52,0.484"/>
 
-        <Button Content="Déconnexion" Margin="352,350,352,80" Click="OnLogout" />
+        <Button Content="Déconnexion" Margin="660,103,44,327" Click="OnLogout" />
     </Grid>
 </Page>

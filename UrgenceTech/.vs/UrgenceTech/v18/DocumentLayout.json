@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\nvappweb\\urgencetech\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\nvappweb\\urgencetech\\views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\nvappweb\\urgencetech\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -14,15 +26,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1198,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SignUp.g.i.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs*",
+              "RelativeToolTip": "obj\\Debug\\net8.0-windows\\Views\\SignUp.g.i.cs*",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAYwJgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T23:15:20.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SignUp.xaml",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\Views\\SignUp.xaml",
+              "RelativeDocumentMoniker": "Views\\SignUp.xaml",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\Views\\SignUp.xaml",
+              "RelativeToolTip": "Views\\SignUp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-26T23:14:52.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SignUp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\Views\\SignUp.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\SignUp.xaml.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\Views\\SignUp.xaml.cs*",
+              "RelativeToolTip": "Views\\SignUp.xaml.cs*",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAAKwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T23:12:23.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\nvAppWeb\\UrgenceTech\\Views\\LoginView.xaml",
               "RelativeDocumentMoniker": "Views\\LoginView.xaml",
