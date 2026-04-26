@@ -18,6 +18,6 @@
         <TextBox x:Name="StatusText"
    TextAlignment="Center" Margin="588,35,0,352" RenderTransformOrigin="0.52,0.484"/>
 
-        <Button Content="Déconnexion" Margin="660,103,44,327" Click="OnLogout" />
+        <Button Content="Déconnexion" Margin="660,103,44,328" Click="OnLogout" />
     </Grid>
 </Page>
