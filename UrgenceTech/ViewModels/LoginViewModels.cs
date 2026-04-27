@@ -30,9 +30,23 @@ namespace UrgenceTech.ViewModels
             MessageErreur = string.Empty;
 
             //Veriifer si les champs sont vides
-            if (string.IsNullOrEmpty(Courriel) || string.IsNullOrEmpty(MotDePasse)) 
+            if (string.IsNullOrEmpty(Courriel) || string.IsNullOrEmpty(MotDePasse))
             {
                 MessageErreur = "Veuillez remplir tous les champs.";
+                return;
+            }
+
+            // Vérifier le format de l'email
+            if (!Courriel.Contains("@") || !Courriel.Contains("."))
+            {
+                MessageErreur = "Format d'email invalide.";
+                return;
+            }
+
+            // Vérifier la longueur du mot de passe
+            if (MotDePasse.Length < 8)
+            {
+                MessageErreur = "Le mot de passe doit contenir au moins 8 caractères.";
                 return;
             }
 
@@ -68,6 +82,7 @@ namespace UrgenceTech.ViewModels
                 }
             }
         }
+
     }
 
 }
