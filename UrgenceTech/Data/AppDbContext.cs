@@ -8,7 +8,7 @@ using UrgenceTech.Models;
 
 namespace UrgenceTech.Data
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Utilisateur> Utilisateurs { get; set; }
 

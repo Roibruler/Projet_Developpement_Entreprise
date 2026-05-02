@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +15,7 @@ using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour SignUp.xaml
-    /// </summary>
+
     public partial class SignUp : Page
     {
         private CritèreViewModel _criteriaViewModel;
@@ -29,14 +27,16 @@ namespace UrgenceTech.Views
             DataContext = _criteriaViewModel;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void AccepterConditions_Changed(object sender, RoutedEventArgs e)
         {
-
+            CreerCompteBTN.IsEnabled = AccepterConditions.IsChecked == true;
         }
 
-        private void Window_DpiChanged(object sender, DpiChangedEventArgs e)
+        private void LienConditions_Click(object sender, RoutedEventArgs e)
         {
-
+            ConditionsWindow fenetre = new ConditionsWindow();
+            fenetre.Owner = Window.GetWindow(this);
+            fenetre.ShowDialog();
         }
 
         private void CreerCompteBTN_Click(object sender, RoutedEventArgs e)
