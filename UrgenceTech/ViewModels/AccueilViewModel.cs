@@ -7,7 +7,7 @@ using UrgenceTech.Models;
 
 namespace UrgenceTech.ViewModels
 {
-    public class TestViewModels
+    public class AccueilViewModel
     {
         private SessionManager _sessionManager;
         private UserSession _currentSession;
@@ -20,7 +20,7 @@ namespace UrgenceTech.ViewModels
         public event Action LogoutRequested;
 
 
-        public TestViewModels()
+        public AccueilViewModel()
         {
             _sessionManager = new SessionManager();
             _sessionManager.SessionExpired += OnSessionExpired;

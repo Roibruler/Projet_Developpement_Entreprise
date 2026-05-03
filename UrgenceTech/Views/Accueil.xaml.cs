@@ -20,15 +20,14 @@ namespace UrgenceTech.Views
     /// <summary>
     /// Logique d'interaction pour Test.xaml
     /// </summary>
-    public partial class Test : Page
+    public partial class Accueil : Page
     {
 
-        private TestViewModels test = new TestViewModels();
+        private AccueilViewModel test = new AccueilViewModel();
 
-        public Test()
+        public Accueil()
         {
             InitializeComponent();
-
 
             test.StatusChanged += () => StatusText.Text = test.Statut;
             test.SessionExpired += OnSessionExpired;
@@ -38,6 +37,8 @@ namespace UrgenceTech.Views
 
 
         }
+
+      
 
         private void OnUserActivity(object sender, RoutedEventArgs e)
         {

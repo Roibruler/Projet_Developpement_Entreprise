@@ -17,8 +17,6 @@ namespace UrgenceTech
         public int Token { get; set; }
 
 
-
-
         public SessionManager()
         {
             _userSession = new UserSession();
@@ -42,6 +40,7 @@ namespace UrgenceTech
             _userSession.IsActive = false;
             _userSession.Token = null;
             inactivityTimer.Stop();
+
         }
 
         public void ResetActivity()
@@ -54,7 +53,7 @@ namespace UrgenceTech
 
         private void CheckSessionStatus(object sender, ElapsedEventArgs e)
         {
-            if (_userSession.Token == null ) return;
+            if (_userSession.Token == null || expired) return;
 
             if (DateTime.Now - _userSession.LastActivity > SessionTimeout)
             {
