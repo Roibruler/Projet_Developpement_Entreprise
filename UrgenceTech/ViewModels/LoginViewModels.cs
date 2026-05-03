@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.EntityFrameworkCore;
-using UrgenceTech.Data;
 using UrgenceTech.Views;
 
 namespace UrgenceTech.ViewModels
@@ -23,66 +17,60 @@ namespace UrgenceTech.ViewModels
         [ObservableProperty]
         private string messageErreur = string.Empty;
 
+        [ObservableProperty]
+        private bool estEnChargement = false;
+
         [RelayCommand]
         private async Task SeConnecter()
         {
-            // Effacer le message d'erreur précédent
             MessageErreur = string.Empty;
 
-            //Veriifer si les champs sont vides
-            if (string.IsNullOrEmpty(Courriel) || string.IsNullOrEmpty(MotDePasse))
+            if (string.IsNullOrWhiteSpace(Courriel) || string.IsNullOrWhiteSpace(MotDePasse))
             {
                 MessageErreur = "Veuillez remplir tous les champs.";
                 return;
             }
 
-            // Vérifier le format de l'email
             if (!Courriel.Contains("@") || !Courriel.Contains("."))
             {
-                MessageErreur = "Format d'email invalide.";
+                MessageErreur = "Format de courriel invalide.";
                 return;
             }
 
-            // Vérifier la longueur du mot de passe
             if (MotDePasse.Length < 8)
             {
                 MessageErreur = "Le mot de passe doit contenir au moins 8 caractères.";
                 return;
             }
 
-            //Chercher l'utilisateur dans la BD
-            using var context = new AppDbContext();
+            EstEnChargement = true;
 
-            var utilisateur = await context.Utilisateurs
-                .FirstOrDefaultAsync(u => u.Courriel == Courriel
-                                    && u.MotDePasse == MotDePasse
-                                    && u.Status == true);
-
-            
-            
-            //Identifiants incorrects
-            if (utilisateur == null)
+            try
             {
-                MessageErreur = "Identifiants incorrects.";
-                return;
-            }
+                var (utilisateur, erreur) = await AuthService.SeConnecterAsync(Courriel, MotDePasse);
 
-            //Redirection vers la page principale 
-            
-            var menu = new MenuView();
-            menu.Show();
-
-            // Fermer la fenêtre Login
-            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
-            {
-                if (window is LoginView)
+                if (utilisateur == null)
                 {
-                    window.Close();
-                    break;
+                    MessageErreur = erreur;
+                    return;
+                }
+
+                var menu = new MenuView();
+                menu.Show();
+
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is LoginView)
+                    {
+                        window.Close();
+                        break;
+                    }
                 }
             }
+            finally
+            {
+                EstEnChargement = false;
+            }
         }
-
     }
-
 }

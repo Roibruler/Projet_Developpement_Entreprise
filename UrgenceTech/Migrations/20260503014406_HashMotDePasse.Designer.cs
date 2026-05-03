@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrgenceTech.Data;
 
@@ -10,47 +11,14 @@ using UrgenceTech.Data;
 namespace UrgenceTech.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260503014406_HashMotDePasse")]
+    partial class HashMotDePasse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.25");
-
-            modelBuilder.Entity("UrgenceTech.Models.Urgence", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateCreation")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Priorite")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Statut")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Titre")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UtilisateurID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UtilisateurID");
-
-                    b.ToTable("Urgences");
-                });
 
             modelBuilder.Entity("UrgenceTech.Models.Utilisateur", b =>
                 {
@@ -95,23 +63,12 @@ namespace UrgenceTech.Migrations
                         {
                             ID = 1,
                             Courriel = "admin@urgencetech.com",
-                            MotDePasse = "$2a$11$I5vrX98gW7JZPzjW4GdxBuzCFr1dsXOf8JhLgiV05EkMtaJthFln6",
+                            MotDePasse = "$2a$11$.wa0BmRx22LSyp.mhLsvh.0d8OTKAkqsnmnKuDFXff3ajaXPpfE.G",
                             NomComplet = "Admin Test",
                             Role = "Administrateur",
                             Status = true,
                             TentativesEchouees = 0
                         });
-                });
-
-            modelBuilder.Entity("UrgenceTech.Models.Urgence", b =>
-                {
-                    b.HasOne("UrgenceTech.Models.Utilisateur", "Utilisateur")
-                        .WithMany()
-                        .HasForeignKey("UtilisateurID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Utilisateur");
                 });
 #pragma warning restore 612, 618
         }
