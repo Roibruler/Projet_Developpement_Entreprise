@@ -29,9 +29,10 @@ namespace UrgenceTech.Data
                     Role = "Administrateur",
                     Status = true
                 }
+
             );
         }
-
+            
     }
 
 }

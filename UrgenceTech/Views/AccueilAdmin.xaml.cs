@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,28 +23,33 @@ namespace UrgenceTech.Views
     /// </summary>
     public partial class AccueilAdmin : Page
     {
-        private AccueilViewModel testAdmin = new AccueilViewModel();
 
-        public AccueilAdmin()
+        private readonly AccueilViewModel _accueilAdminiViewModel;
+
+        public AccueilAdmin(AccueilViewModel accueilViewModel)
         {
             InitializeComponent();
-            testAdmin.StatusChanged += () => StatusText.Text = testAdmin.Statut;
-            testAdmin.SessionExpired += OnSessionExpired;
-            testAdmin.LogoutRequested += OnLogout;
 
-            StatusText.Text = testAdmin.Statut;
+            _accueilAdminiViewModel = accueilViewModel;
+            DataContext = _accueilAdminiViewModel;
+
+            _accueilAdminiViewModel.StatusChanged += () => StatusText.Text = _accueilAdminiViewModel.Statut;
+            _accueilAdminiViewModel.SessionExpired += OnSessionExpired;
+            _accueilAdminiViewModel.LogoutRequested += OnLogout;
+
+            StatusText.Text = _accueilAdminiViewModel.Statut;
 
 
         }
 
         private void OnUserActivity(object sender, RoutedEventArgs e)
         {
-            testAdmin.UserActivity();
+            _accueilAdminiViewModel.UserActivity();
         }
 
         private void OnLogout(object sender, RoutedEventArgs e)
         {
-            testAdmin.Logout();
+            _accueilAdminiViewModel.Logout();
         }
 
         private void OnSessionExpired()
@@ -51,7 +57,8 @@ namespace UrgenceTech.Views
             Dispatcher.Invoke(() =>
             {
                 MessageBox.Show("Votre session a expiré.");
-                Window.GetWindow(this).Close();
+                System.Windows.Application.Current.Shutdown();
+
             });
         }
 
@@ -60,6 +67,14 @@ namespace UrgenceTech.Views
             MessageBox.Show("Déconnexion réussie.");
             Window.GetWindow(this).Close();
 
+
+        }
+
+        private void GotoVoirUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+
+            var page = App.ServiceProvider.GetRequiredService<VoirUtilisateur>();
+            NavigationService.Navigate(page);
 
         }
 

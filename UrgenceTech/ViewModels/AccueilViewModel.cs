@@ -20,9 +20,9 @@ namespace UrgenceTech.ViewModels
         public event Action LogoutRequested;
 
 
-        public AccueilViewModel()
+        public AccueilViewModel(SessionManager sessionManager)
         {
-            _sessionManager = new SessionManager();
+            _sessionManager = sessionManager;
             _sessionManager.SessionExpired += OnSessionExpired;
 
             _currentSession = _sessionManager.StartSession();
@@ -44,7 +44,7 @@ namespace UrgenceTech.ViewModels
 
         private void OnSessionExpired()
         {
-            SessionExpired.Invoke();
+            SessionExpired?.Invoke();
         }
 
 

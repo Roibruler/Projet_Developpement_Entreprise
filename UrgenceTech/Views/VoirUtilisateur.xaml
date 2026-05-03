@@ -8,9 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="VoirUtilisateur"
       Background="Transparent">
-      
 
-    <Grid>
+
+    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -25,10 +25,47 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        
-        
-        
-        
+
+
+        <TextBox x:Name="StatusText"
+    TextAlignment="Center" Margin="634,-399,-46,786" RenderTransformOrigin="0.52,0.484"/>
+
+        <Border Grid.ColumnSpan="3" Grid.Column="1" Width="200" Height="60" Background="White">
+            <TextBlock   Text="Consulter les utilisateurs" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+
+        <Button Content="Déconnexion" Width="100" Height="20" Click="OnLogout"
+     Grid.Column="5" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+        <TextBox Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" Width="300" Height="40" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                 TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <DataGrid ItemsSource="{Binding Utilisateurs}" Grid.ColumnSpan="3" Grid.RowSpan="3" ColumnWidth="*"
+                  Grid.Column="1" Grid.Row="2" AutoGenerateColumns="False">
+
+            <!--Si Status = False, le row devien rouge-->
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="White"/>
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="False">
+                            <Setter Property="Background" Value="#FFFFC0C0"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Nom complet" Binding="{Binding NomComplet}"/>
+                <DataGridTextColumn Header="Courriel" Binding="{Binding Courriel}"/>
+                <DataGridTextColumn Header="Rôle" Binding="{Binding Role}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </Page>

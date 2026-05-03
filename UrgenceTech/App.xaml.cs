@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,21 +25,34 @@ namespace UrgenceTech
 
             ShutdownMode = ShutdownMode.OnLastWindowClose;
 
-            // Applique les migrations et crée la base de données si elle n'existe pas
-            using var context = new AppDbContext();
-            context.Database.Migrate();
-
+            //injection de Dépendance
+           
             var services = new ServiceCollection();
 
-            // Register SessionManager as Singleton - available to all pages
-            services.AddSingleton<SessionManager>();
+            //Registrer Base de Donné
+            using var context = new AppDbContext();
+            services.AddDbContext<AppDbContext>();
+
+         
 
             // Register ViewModels
             services.AddTransient<AccueilViewModel>();
+            services.AddTransient<VoirUtilisateurViewModel>();
 
-          
+            //Registre Views
+            services.AddTransient<Accueil>();
+            services.AddTransient<AccueilAdmin>(); 
+            services.AddTransient<VoirUtilisateur>();
+            services.AddTransient<SignIn>();
+
+            //Registrer Singleton
+            services.AddSingleton<SessionManager>();
+
+
             ServiceProvider = services.BuildServiceProvider();
             // Show main window from service provider
+
+            context.Database.Migrate();
 
             var mainWindow = new MainWindow
             {

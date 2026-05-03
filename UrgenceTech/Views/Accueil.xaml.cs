@@ -22,18 +22,21 @@ namespace UrgenceTech.Views
     /// </summary>
     public partial class Accueil : Page
     {
+        private readonly AccueilViewModel _accueilViewModel;
 
-        private AccueilViewModel test = new AccueilViewModel();
 
-        public Accueil()
+        public Accueil(AccueilViewModel accueilViewModel)
         {
             InitializeComponent();
 
-            test.StatusChanged += () => StatusText.Text = test.Statut;
-            test.SessionExpired += OnSessionExpired;
-            test.LogoutRequested += OnLogout;
+            _accueilViewModel = accueilViewModel;
+            DataContext = _accueilViewModel;
 
-            StatusText.Text = test.Statut;
+            _accueilViewModel.StatusChanged += () => StatusText.Text = _accueilViewModel.Statut;
+            _accueilViewModel.SessionExpired += OnSessionExpired;
+            _accueilViewModel.LogoutRequested += OnLogout;
+
+            StatusText.Text = _accueilViewModel.Statut;
 
 
         }
@@ -42,12 +45,12 @@ namespace UrgenceTech.Views
 
         private void OnUserActivity(object sender, RoutedEventArgs e)
         {
-            test.UserActivity();
+            _accueilViewModel.UserActivity();
         }
 
         private void OnLogout(object sender, RoutedEventArgs e)
         {
-            test.Logout();
+            _accueilViewModel.Logout();
         }
 
         private void OnSessionExpired()
@@ -55,7 +58,7 @@ namespace UrgenceTech.Views
             Dispatcher.Invoke(() =>
             {
                 MessageBox.Show("Votre session a expiré.");
-                Window.GetWindow(this).Close();
+                System.Windows.Application.Current.Shutdown();
             });
         }
 
