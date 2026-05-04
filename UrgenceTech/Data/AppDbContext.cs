@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UrgenceTech.Models;
 
 namespace UrgenceTech.Data
 {
-    public class AppDbContext : DbContext
+    internal class AppDbContext : DbContext
     {
         public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Urgence> Urgences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -19,20 +16,19 @@ namespace UrgenceTech.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            string motDePasseHash = BCrypt.Net.BCrypt.HashPassword("admin123");
+
             modelBuilder.Entity<Utilisateur>().HasData(
                 new Utilisateur
                 {
                     ID = 1,
                     NomComplet = "Admin Test",
                     Courriel = "admin@urgencetech.com",
-                    MotDePasse = "admin123",
+                    MotDePasse = motDePasseHash,
                     Role = "Administrateur",
                     Status = true
                 }
-
             );
         }
-            
     }
-
 }

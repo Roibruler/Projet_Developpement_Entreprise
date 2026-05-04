@@ -5,10 +5,7 @@
     <Compile Update="Views\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\AccueilAdmin.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\VoirUtilisateur.xaml.cs">
+    <Compile Update="Views\TableauDeBordView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
