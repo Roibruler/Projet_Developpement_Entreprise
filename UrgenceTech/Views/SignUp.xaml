@@ -5,7 +5,11 @@
       Background="#F5F5F5">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel Width="400">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="400" Grid.ColumnSpan="2">
 
             <Image Source="/logoUrgenceTech.png" Stretch="Uniform" Height="120" Margin="0,0,0,10"/>
 
@@ -43,31 +47,29 @@
 
         </StackPanel>
 
-    
-        <StackPanel Orientation="Vertical" x:Name="CriètreMotDePasse" Visibility="Collapsed" Margin="1121,462,61,384"  >
+        <StackPanel Orientation="Vertical" x:Name="CriètreMotDePasse" Visibility="Collapsed" Margin="59,10,58,472" Grid.ColumnSpan="2" Background="#1976D2"  >
+
             <TextBox Text="Critère de Mote de passe" />
 
             <CheckBox Content="Au moins 8 caractères"
-            IsChecked="{Binding MinLength}"
-            IsEnabled="False"/>
+                IsChecked="{Binding MinLength}"
+                IsEnabled="False"/>
 
             <CheckBox Content="Une lettre majuscule"
-            IsChecked="{Binding Majuscule}"
-            IsEnabled="False"/>
+                IsChecked="{Binding Majuscule}"
+                IsEnabled="False"/>
 
 
             <CheckBox Content="Une lettre minuscule"
-              IsChecked="{Binding Minuscule}"
-              IsEnabled="False"/>
+                  IsChecked="{Binding Minuscule}"
+                  IsEnabled="False"/>
 
             <CheckBox Content="Un chiffre"
-              IsChecked="{Binding Nombre}"
-              IsEnabled="False"/>
-
+                  IsChecked="{Binding Nombre}"
+                  IsEnabled="False"/>
             <CheckBox Content="Un caractère spécial"
-              IsChecked="{Binding SpecialCharactère}"
-              IsEnabled="False"/>
-
+                  IsChecked="{Binding SpecialCharactère}"
+                  IsEnabled="False"/>
         </StackPanel>
 
     </Grid>

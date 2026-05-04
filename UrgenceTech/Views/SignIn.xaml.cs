@@ -90,16 +90,7 @@ namespace UrgenceTech.Views
                 utilisateur.DateVerrouillage = null;
                 await _context.SaveChangesAsync();
 
-                if (utilisateur.Role.Equals("Administrateur"))
-                {
-                    var adminPage = App.ServiceProvider.GetRequiredService<AccueilAdmin>();
-                    NavigationService.Navigate(adminPage);
-                }
-                else
-                {
-                    var userPage = App.ServiceProvider.GetRequiredService<Accueil>();
-                    NavigationService.Navigate(userPage);
-                }
+   
             }
             finally
             {

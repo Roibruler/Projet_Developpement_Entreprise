@@ -27,11 +27,8 @@ namespace UrgenceTech.ViewModels
             }
 
         }
-
-
         private bool _minLength;
         //vérifie si le min mot est bon
-
         public bool MinLength 
         { 
             get => _minLength;
@@ -48,7 +45,6 @@ namespace UrgenceTech.ViewModels
 
         private bool _majuscule;
         //vérifie si le max mot est bon
-
         public bool Majuscule 
         { 
             get => _majuscule;
@@ -79,10 +75,8 @@ namespace UrgenceTech.ViewModels
                 }
             }
         }
-
         private bool _nombre;
         //vérifie s'il un nombre est bon
-
         public bool Nombre 
         { 
             get => _nombre;
@@ -96,11 +90,8 @@ namespace UrgenceTech.ViewModels
                 }
             }
         }
-
         private bool _specialCharactère;
-
         //vérifie s'il une lettre spécial est bon
-
         public bool SpecialCharactère 
         { 
             get => _specialCharactère;
@@ -114,10 +105,8 @@ namespace UrgenceTech.ViewModels
                 }
             }
         }
-
         //vérifie si le mot de passe est valide
         public bool IsPasswordValid => MinLength && Majuscule && Minuscule && Nombre && SpecialCharactère;
-
         public void ValidateMotDePasse()
         {
             string pwd = MotDePasse ?? "";
