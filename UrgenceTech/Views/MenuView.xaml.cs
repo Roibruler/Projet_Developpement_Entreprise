@@ -18,6 +18,7 @@ namespace UrgenceTech.Views
 
         private void NavUrgences_Click(object sender, RoutedEventArgs e)
         {
+            ContenuPrincipal.Content = new UrgenceView();
         }
 
         private void NavUtilisateurs_Click(object sender, RoutedEventArgs e)
