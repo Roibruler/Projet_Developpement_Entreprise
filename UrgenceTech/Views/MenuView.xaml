@@ -30,10 +30,14 @@
                         Style="{StaticResource NavBouton}"
                         Click="NavUrgences_Click"/>
 
-                <Button Content="👥  Utilisateurs"
+                <Button Content="👤  Utilisateurs"
                         Style="{StaticResource NavBouton}"
                         Click="NavUtilisateurs_Click"/>
 
+                <Button Content="👥  Consultation Liste"
+                    Style="{StaticResource NavBouton}"
+                    Click="NavConsultation_Click"/>
+                
                 <Button Content="🚪  Déconnexion"
                         Style="{StaticResource NavBoutonDeconnexion}"
                         Click="Deconnexion_Click"/>

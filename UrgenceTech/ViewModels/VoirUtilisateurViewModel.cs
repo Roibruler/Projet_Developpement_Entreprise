@@ -22,7 +22,7 @@ namespace UrgenceTech.ViewModels
         private string search;
 
         [ObservableProperty]
-        public ObservableCollection<Utilisateur> utilisateurs;
+        private ObservableCollection<Utilisateur> utilisateurs;
 
         private string sortColumn = "NomComplet";
 
@@ -32,6 +32,13 @@ namespace UrgenceTech.ViewModels
             this.context = context;
             utilisateurs = new ObservableCollection<Utilisateur>();
             LoadUsers();
+        }
+
+
+
+        partial void OnSearchChanged(string value)
+        {
+            FiltreEtTrier();
         }
 
 
@@ -57,11 +64,11 @@ namespace UrgenceTech.ViewModels
             var query = context.Utilisateurs.AsQueryable();
 
             //Search bar
-            if (!string.IsNullOrWhiteSpace(search))
+            if (!string.IsNullOrWhiteSpace(Search))
             {
                 query = query.Where(u =>
-                    u.NomComplet.Contains(search) ||
-                    u.Courriel.Contains(search));
+                    u.NomComplet.Contains(Search) ||
+                    u.Courriel.Contains(Search));
             }
 
             //trie les utilisateurs

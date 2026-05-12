@@ -21,11 +21,11 @@ namespace UrgenceTech.Views
     /// <summary>
     /// Interaction logic for VoirUtilisateur.xaml
     /// </summary>
-    internal partial class VoirUtilisateur : Page
+    internal partial class VoirUtilisateurView : UserControl
     {
 
 
-        public VoirUtilisateur()
+        public VoirUtilisateurView()
         {
             InitializeComponent();
 

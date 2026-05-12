@@ -8,6 +8,7 @@ namespace UrgenceTech.Views
     {
 
         private SessionManagerViewModel _sessionManagerViewModel;
+
         public MenuView(SessionManagerViewModel sessionManagerViewModel)
         {
             InitializeComponent();
@@ -32,6 +33,12 @@ namespace UrgenceTech.Views
 
         private void NavUtilisateurs_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void NavConsultation_Click(object sender, RoutedEventArgs e)
+        {
+            ContenuPrincipal.Content = new VoirUtilisateurView();
         }
 
         private void Deconnexion_Click(object sender, RoutedEventArgs e)
