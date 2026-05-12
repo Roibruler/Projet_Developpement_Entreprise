@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
 using UrgenceTech.Data;
 using UrgenceTech.Models;
+using System.Windows.Threading;
 
 namespace UrgenceTech.ViewModels
 {
@@ -15,14 +16,27 @@ namespace UrgenceTech.ViewModels
         private int nombreUrgencesActives;
 
         [ObservableProperty]
+        private int nombreUrgencesResoluesAujourdhui;
+
+        [ObservableProperty]
+        private int nombreUtilisateursConnectes;
+
+        [ObservableProperty]
         private ObservableCollection<Urgence> urgencesRecentes = new();
 
         [ObservableProperty]
         private bool estEnChargement = false;
 
+        private readonly DispatcherTimer _timer;
+
         public TableauDeBordViewModel()
         {
             _ = ChargerDonneesAsync();
+            // Timer qui rafraîchit les données toutes les 60 secondes
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(60);
+            _timer.Tick += async (s, e) => await ChargerDonneesAsync();
+            _timer.Start();
         }
 
         [RelayCommand]
@@ -41,6 +55,13 @@ namespace UrgenceTech.ViewModels
 
                 NombreUrgencesActives = await context.Urgences
                     .CountAsync(u => u.Statut != "Résolue");
+
+                NombreUrgencesResoluesAujourdhui = await context.Urgences
+                    .CountAsync(u => u.Statut == "Résolue"
+                        && u.DateCreation.Date == DateTime.Today);
+
+                NombreUtilisateursConnectes = await context.Utilisateurs
+                    .CountAsync(u => u.Status == true);
 
                 var recentes = await context.Urgences
                     .Include(u => u.Utilisateur)
