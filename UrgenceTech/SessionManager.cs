@@ -14,8 +14,6 @@ namespace UrgenceTech
         public event Action SessionExpired;
         private bool expired;
         private UserSession _userSession;
-        public int Token { get; set; }
-
 
         public SessionManager()
         {

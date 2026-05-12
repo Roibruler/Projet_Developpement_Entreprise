@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,14 @@ using UrgenceTech.Models;
 
 namespace UrgenceTech.ViewModels
 {
-    public class AccueilViewModel
+    public partial class SessionManagerViewModel : ObservableObject
     {
+        [ObservableProperty]
         private SessionManager _sessionManager;
+        [ObservableProperty]
         private UserSession _currentSession;
-
-        public string Statut { get; set; }
+        [ObservableProperty]
+        public string statut;
 
 
         public event Action StatusChanged;
@@ -20,26 +23,26 @@ namespace UrgenceTech.ViewModels
         public event Action LogoutRequested;
 
 
-        public AccueilViewModel(SessionManager sessionManager)
+        public SessionManagerViewModel(SessionManager sessionManager)
         {
             _sessionManager = sessionManager;
             _sessionManager.SessionExpired += OnSessionExpired;
 
             _currentSession = _sessionManager.StartSession();
-            Statut = "Session démarrée";
+            statut = "Session démarrée";
         }
 
         public void UserActivity()
         {
             _sessionManager.ResetActivity();
-            Statut = "Activité détectée : " + DateTime.Now.ToLongTimeString();
-            StatusChanged.Invoke();
+            statut = "Activité détectée : " + DateTime.Now.ToLongTimeString();
+            StatusChanged?.Invoke();
         }
 
         public void Logout()
         {
-            _sessionManager.EndSession();
-            LogoutRequested.Invoke();
+            _sessionManager?.EndSession();
+            LogoutRequested?.Invoke();
         }
 
         private void OnSessionExpired()

@@ -22,22 +22,20 @@ namespace UrgenceTech.Views
     /// </summary>
     public partial class Accueil : Page
     {
-        private readonly AccueilViewModel _accueilViewModel;
+        private readonly SessionManagerViewModel _sessionManagerViewModel;
 
 
-        public Accueil(AccueilViewModel accueilViewModel)
+        public Accueil(SessionManagerViewModel sessionManagerViewModel)
         {
             InitializeComponent();
 
-            _accueilViewModel = accueilViewModel;
-            DataContext = _accueilViewModel;
+            _sessionManagerViewModel = sessionManagerViewModel;
+            DataContext = _sessionManagerViewModel;
 
-            _accueilViewModel.StatusChanged += () => StatusText.Text = _accueilViewModel.Statut;
-            _accueilViewModel.SessionExpired += OnSessionExpired;
-            _accueilViewModel.LogoutRequested += OnLogout;
+            _sessionManagerViewModel.SessionExpired += OnSessionExpired;
+            _sessionManagerViewModel.LogoutRequested += OnLogout;
 
-            StatusText.Text = _accueilViewModel.Statut;
-
+  
 
         }
 
@@ -45,12 +43,12 @@ namespace UrgenceTech.Views
 
         private void OnUserActivity(object sender, RoutedEventArgs e)
         {
-            _accueilViewModel.UserActivity();
+            _sessionManagerViewModel.UserActivity();
         }
 
         private void OnLogout(object sender, RoutedEventArgs e)
         {
-            _accueilViewModel.Logout();
+            _sessionManagerViewModel.Logout();
         }
 
         private void OnSessionExpired()

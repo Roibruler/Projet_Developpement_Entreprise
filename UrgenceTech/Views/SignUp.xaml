@@ -26,7 +26,9 @@
                     <TextBox x:Name="Email" Height="35" FontSize="14" Padding="8" Margin="0,0,0,15"/>
 
                     <TextBlock Text="Mot de passe" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <PasswordBox x:Name="MotPasse" Height="35" FontSize="14" Padding="8" Margin="0,0,0,15"/>
+                    <PasswordBox x:Name="MotPasse" Height="35" FontSize="14" Padding="8" Margin="0,0,0,15"
+                                 LostFocus="MotPasse_LostFocus" GotFocus="MotPasse_GotFocus"
+                                 PasswordChanged="MotPasse_PasswordChanged"/>
 
                     <TextBlock Text="Confirmer le mot de passe" FontWeight="Bold" Margin="0,0,0,5"/>
                     <PasswordBox x:Name="ConfirmerMotPasse" Height="35" FontSize="14" Padding="8" Margin="0,0,0,15"/>
@@ -47,30 +49,32 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" x:Name="CriètreMotDePasse" Visibility="Collapsed" Margin="59,10,58,472" Grid.ColumnSpan="2" Background="#1976D2"  >
+            <StackPanel Orientation="Vertical" x:Name="CriètreMotDePasse" Visibility="Collapsed"
+                        Margin="59,10,58,472" Grid.ColumnSpan="2" Background="White" >
+            
+                    <TextBox Text="Critère de Mote de passe" Background="#1976D2" Foreground="White"/>
 
-            <TextBox Text="Critère de Mote de passe" />
+                <CheckBox Content="Au moins 8 caractères"
+                    IsChecked="{Binding MinLength}"
+                    IsEnabled="False"/>
 
-            <CheckBox Content="Au moins 8 caractères"
-                IsChecked="{Binding MinLength}"
-                IsEnabled="False"/>
-
-            <CheckBox Content="Une lettre majuscule"
-                IsChecked="{Binding Majuscule}"
-                IsEnabled="False"/>
+                <CheckBox Content="Une lettre majuscule"
+                    IsChecked="{Binding Majuscule}"
+                    IsEnabled="False"/>
 
 
-            <CheckBox Content="Une lettre minuscule"
-                  IsChecked="{Binding Minuscule}"
-                  IsEnabled="False"/>
+                <CheckBox Content="Une lettre minuscule"
+                      IsChecked="{Binding Minuscule}"
+                      IsEnabled="False"/>
 
-            <CheckBox Content="Un chiffre"
-                  IsChecked="{Binding Nombre}"
-                  IsEnabled="False"/>
-            <CheckBox Content="Un caractère spécial"
-                  IsChecked="{Binding SpecialCharactère}"
-                  IsEnabled="False"/>
-        </StackPanel>
+                <CheckBox Content="Un chiffre"
+                      IsChecked="{Binding Nombre}"
+                      IsEnabled="False"/>
+                <CheckBox Content="Un caractère spécial"
+                      IsChecked="{Binding SpecialCharactère}"
+                      IsEnabled="False"/>
 
+            
+            </StackPanel>
     </Grid>
 </Page>

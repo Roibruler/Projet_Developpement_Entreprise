@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,40 +13,34 @@ using UrgenceTech.Models;
 
 namespace UrgenceTech.ViewModels
 {
-    public class VoirUtilisateurViewModel : INotifyPropertyChanged
+    internal partial class VoirUtilisateurViewModel : ObservableObject
     {
 
         private readonly AppDbContext context;
 
+        [ObservableProperty]
         private string search;
-        public string Search
-        {
-            get => search;
-            set
-            {
-                search = value;
-                OnPropertyChanged();
-                FiltreEtTrier();
-            }
-        }
 
-        public ObservableCollection<Utilisateur> Utilisateurs {  get; set; }
+        [ObservableProperty]
+        public ObservableCollection<Utilisateur> utilisateurs;
 
         private string sortColumn = "NomComplet";
+
 
         public VoirUtilisateurViewModel(AppDbContext context)
         {
             this.context = context;
-            Utilisateurs = new ObservableCollection<Utilisateur>();
+            utilisateurs = new ObservableCollection<Utilisateur>();
             LoadUsers();
         }
+
 
         //les met dans la liste avec leur nom, etc
         private void LoadUsers()
         {
-            Utilisateurs.Clear();
+            utilisateurs.Clear();
             foreach (var utilisateur in context.Utilisateurs )
-                Utilisateurs.Add(utilisateur);
+                utilisateurs.Add(utilisateur);
         }
         //trier par column
         public void Trier(string column)
@@ -55,18 +50,18 @@ namespace UrgenceTech.ViewModels
         }
 
 
-        //
+        
         private void FiltreEtTrier()
         {
             //prend les utilisateur
             var query = context.Utilisateurs.AsQueryable();
 
             //Search bar
-            if (!string.IsNullOrWhiteSpace(Search))
+            if (!string.IsNullOrWhiteSpace(search))
             {
                 query = query.Where(u =>
-                    u.NomComplet.Contains(Search) ||
-                    u.Courriel.Contains(Search));
+                    u.NomComplet.Contains(search) ||
+                    u.Courriel.Contains(search));
             }
 
             //trie les utilisateurs
@@ -77,16 +72,12 @@ namespace UrgenceTech.ViewModels
                 _ => query.OrderBy(u => u.NomComplet)
             };
 
-            Utilisateurs.Clear();
+            utilisateurs.Clear();
             foreach (var user in query)
-                Utilisateurs.Add(user);
+                utilisateurs.Add(user);
 
 
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string prop = null)
-                   => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
     }
 }

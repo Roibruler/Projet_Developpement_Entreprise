@@ -6,7 +6,7 @@
         Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>

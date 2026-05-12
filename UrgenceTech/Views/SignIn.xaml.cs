@@ -10,7 +10,7 @@ using UrgenceTech.Data;
 namespace UrgenceTech.Views
 {
 
-    public partial class SignIn : Page
+    internal partial class SignIn : Page
     {
         
         private const int MaxTentatives = 5;
@@ -18,7 +18,7 @@ namespace UrgenceTech.Views
 
         private readonly AppDbContext _context;
 
-        public SignIn(AppDbContext context)
+        internal SignIn(AppDbContext context)
         {
             InitializeComponent();
             _context = context;

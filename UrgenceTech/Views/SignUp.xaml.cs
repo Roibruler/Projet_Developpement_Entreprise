@@ -78,5 +78,22 @@ namespace UrgenceTech.Views
             loginWindow.Show();
             Window.GetWindow(this)?.Close();
         }
+
+        private void MotPasse_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CriètreMotDePasse.Visibility = Visibility.Visible;
+        }
+
+        private void MotPasse_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CriètreMotDePasse.Visibility = Visibility.Collapsed;
+        }
+
+        private void MotPasse_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            _criteriaViewModel.MotDePasse = MotPasse.Password;
+        }
+
+
     }
 }

@@ -1,14 +1,24 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
     public partial class MenuView : Window
     {
-        public MenuView()
+
+        private SessionManagerViewModel _sessionManagerViewModel;
+        public MenuView(SessionManagerViewModel sessionManagerViewModel)
         {
             InitializeComponent();
             ContenuPrincipal.Content = new TableauDeBordView();
+
+            _sessionManagerViewModel = sessionManagerViewModel;
+            DataContext = _sessionManagerViewModel;
+
+            _sessionManagerViewModel.SessionExpired += OnSessionExpired;
+
+
         }
 
         private void NavTableauDeBord_Click(object sender, RoutedEventArgs e)
@@ -30,5 +40,21 @@ namespace UrgenceTech.Views
             login.Show();
             this.Close();
         }
+
+        private void OnUserActivity(object sender, RoutedEventArgs e)
+        {
+            _sessionManagerViewModel.UserActivity();
+        }
+
+
+        private void OnSessionExpired()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show("Votre session a expiré.");
+                System.Windows.Application.Current.Shutdown();
+            });
+        }
+
     }
 }

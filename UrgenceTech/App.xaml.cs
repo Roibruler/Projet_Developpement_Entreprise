@@ -36,14 +36,16 @@ namespace UrgenceTech
          
 
             // Register ViewModels
-            services.AddTransient<AccueilViewModel>();
-            services.AddTransient<VoirUtilisateurViewModel>();
-
+            services.AddTransient<SessionManagerViewModel>();
             //Registre Views
             services.AddTransient<Accueil>();
             services.AddTransient<AccueilAdmin>(); 
             services.AddTransient<VoirUtilisateur>();
             services.AddTransient<SignIn>();
+            services.AddTransient<SignIn>(sp =>
+                new SignIn(sp.GetRequiredService<AppDbContext>())
+            );
+
 
             //Registrer Singleton
             services.AddSingleton<SessionManager>();
@@ -56,7 +58,7 @@ namespace UrgenceTech
 
             var mainWindow = new MainWindow
             {
-                DataContext = ServiceProvider.GetRequiredService<AccueilViewModel>()
+                DataContext = ServiceProvider.GetRequiredService<SessionManagerViewModel>()
             };
             MainWindow = mainWindow;
             mainWindow.Show();

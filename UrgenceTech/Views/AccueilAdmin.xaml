@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TestAdmin"
-      Background="Transparent">
+      Background="White">
 
 
 
@@ -31,14 +31,11 @@
             <TextBlock Text="Admin Place" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         </Border>
 
-        <TextBox x:Name="StatusText"
-            TextAlignment="Center" Margin="634,-399,-46,786" RenderTransformOrigin="0.52,0.484"/>
-
         <Button Content="Déconnexion" Width="100" Height="20" Click="OnLogout"
              Grid.Column="5" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
 
-        <Button x:Name="ConsulterUser" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Width="200" Height="40" Content="Consulter la liste des utilisateurs"
-            Click="GotoVoirUtilisateur_Click"/>
+        <Button x:Name="ConsulterUser" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" Width="200" Height="40" Content="Consulter la liste des utilisateurs"
+            Click="GotoVoirUtilisateur_Click" Margin="140,25,140,25"/>
     </Grid>
 
 </Page>
