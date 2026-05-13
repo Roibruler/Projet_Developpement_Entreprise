@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using UrgenceTech.Models;
 
 namespace UrgenceTech.Data
@@ -11,6 +6,7 @@ namespace UrgenceTech.Data
     internal class AppDbContext : DbContext
     {
         public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Urgence> Urgences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -30,8 +26,19 @@ namespace UrgenceTech.Data
                     Status = true
                 }
             );
+
+            modelBuilder.Entity<Urgence>()
+                .HasOne(u => u.Utilisateur)
+                .WithMany()
+                .HasForeignKey(u => u.UtilisateurID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Urgence>()
+                .HasOne(u => u.TechnicienAssigne)
+                .WithMany()
+                .HasForeignKey(u => u.TechnicienAssigneID)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
         }
-
     }
-
 }
