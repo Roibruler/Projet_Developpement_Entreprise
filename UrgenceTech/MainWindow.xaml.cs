@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +19,11 @@ namespace UrgenceTech
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new SignIn());
+
+            MainFrame.Navigate(
+                App.ServiceProvider.GetRequiredService<SignIn>()
+            );
+
         }
     }
 }

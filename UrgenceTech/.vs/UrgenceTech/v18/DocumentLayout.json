@@ -1,0 +1,334 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\viewmodels\\voirutilisateurviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:viewmodels\\voirutilisateurviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\viewmodels\\tableaudebordviewsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:viewmodels\\tableaudebordviewsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\signin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\voirutilisateur.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\voirutilisateur.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\voirutilisateur.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\voirutilisateur.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\accueiladmin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\accueiladmin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\views\\conditionswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:views\\conditionswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\viewmodels\\crit\u00E8reviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:viewmodels\\crit\u00E8reviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\viewmodels\\loginviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:viewmodels\\loginviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\models\\utilisateur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:models\\utilisateur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\models\\usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:models\\usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|c:\\users\\diego\\onedrive\\desktop\\realdev\\projet_developpement_entreprise\\urgencetech\\models\\urgence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF650E04-A20A-436B-A998-D88A94B334E9}|UrgenceTech.csproj|solutionrelative:models\\urgence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SignUp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignUp.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\SignUp.xaml.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignUp.xaml.cs",
+              "RelativeToolTip": "Views\\SignUp.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:31:38.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SignIn.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignIn.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\SignIn.xaml.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignIn.xaml.cs",
+              "RelativeToolTip": "Views\\SignIn.xaml.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAYwFwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:27:30.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VoirUtilisateurViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\VoirUtilisateurViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\VoirUtilisateurViewModel.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\VoirUtilisateurViewModel.cs",
+              "RelativeToolTip": "ViewModels\\VoirUtilisateurViewModel.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvyMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:13:03.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TableauDeBordViewsModel.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\TableauDeBordViewsModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\TableauDeBordViewsModel.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\TableauDeBordViewsModel.cs",
+              "RelativeToolTip": "ViewModels\\TableauDeBordViewsModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:13:04.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SignIn.xaml",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignIn.xaml",
+              "RelativeDocumentMoniker": "Views\\SignIn.xaml",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignIn.xaml",
+              "RelativeToolTip": "Views\\SignIn.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T01:27:26.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:25:17.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VoirUtilisateur.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\VoirUtilisateur.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\VoirUtilisateur.xaml.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\VoirUtilisateur.xaml.cs",
+              "RelativeToolTip": "Views\\VoirUtilisateur.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:24:16.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignUp.xaml",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignUp.xaml",
+              "RelativeDocumentMoniker": "Views\\SignUp.xaml",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\SignUp.xaml",
+              "RelativeToolTip": "Views\\SignUp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T01:13:13.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VoirUtilisateur.xaml",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\VoirUtilisateur.xaml",
+              "RelativeDocumentMoniker": "Views\\VoirUtilisateur.xaml",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\VoirUtilisateur.xaml",
+              "RelativeToolTip": "Views\\VoirUtilisateur.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T01:24:12.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccueilAdmin.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\AccueilAdmin.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\AccueilAdmin.xaml.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\AccueilAdmin.xaml.cs",
+              "RelativeToolTip": "Views\\AccueilAdmin.xaml.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:24:02.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\AuthService.cs",
+              "RelativeDocumentMoniker": "AuthService.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\AuthService.cs",
+              "RelativeToolTip": "AuthService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:09:45.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ConditionsWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\ConditionsWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\ConditionsWindow.xaml",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Views\\ConditionsWindow.xaml",
+              "RelativeToolTip": "Views\\ConditionsWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T01:24:06.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LoginViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\LoginViewModels.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginViewModels.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\LoginViewModels.cs",
+              "RelativeToolTip": "ViewModels\\LoginViewModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:13:02.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Crit\u00E8reViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\Crit\u00E8reViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Crit\u00E8reViewModel.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\ViewModels\\Crit\u00E8reViewModel.cs",
+              "RelativeToolTip": "ViewModels\\Crit\u00E8reViewModel.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:12:23.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Utilisateur.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\Utilisateur.cs",
+              "RelativeDocumentMoniker": "Models\\Utilisateur.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\Utilisateur.cs",
+              "RelativeToolTip": "Models\\Utilisateur.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:12:20.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserSession.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\UserSession.cs",
+              "RelativeDocumentMoniker": "Models\\UserSession.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\UserSession.cs",
+              "RelativeToolTip": "Models\\UserSession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:12:18.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:12:17.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Urgence.cs",
+              "DocumentMoniker": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\Urgence.cs",
+              "RelativeDocumentMoniker": "Models\\Urgence.cs",
+              "ToolTip": "C:\\Users\\diego\\OneDrive\\Desktop\\realDev\\Projet_Developpement_Entreprise\\UrgenceTech\\Models\\Urgence.cs",
+              "RelativeToolTip": "Models\\Urgence.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T01:12:16.467Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

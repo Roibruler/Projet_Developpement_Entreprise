@@ -49,14 +49,23 @@ namespace UrgenceTech.ViewModels
             {
                 var (utilisateur, erreur) = await AuthService.SeConnecterAsync(Courriel, MotDePasse);
 
+               
+
                 if (utilisateur == null)
                 {
                     MessageErreur = erreur;
                     return;
                 }
 
-                var menu = new MenuView();
-                menu.Show();
+
+                var sessionManager = new SessionManager();
+                sessionManager?.StartSession();
+
+                var sessionManagerViewModel = new SessionManagerViewModel(sessionManager);
+
+                var menu = new MenuView(sessionManagerViewModel);
+                    menu.Show();
+                
 
                 foreach (Window window in Application.Current.Windows)
                 {
