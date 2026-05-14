@@ -32,5 +32,16 @@ namespace UrgenceTech.Models
 
         [ForeignKey(nameof(TechnicienAssigneID))]
         public Utilisateur? TechnicienAssigne { get; set; }
+
+        public (bool estValide, string messageErreur) EstValide()
+        {
+            if (string.IsNullOrWhiteSpace(Titre))
+                return (false, "Le titre est obligatoire.");
+
+            if (string.IsNullOrWhiteSpace(Priorite))
+                return (false, "La priorité est obligatoire.");
+
+            return (true, string.Empty);
+        }
     }
 }
