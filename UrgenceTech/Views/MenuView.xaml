@@ -7,6 +7,43 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
+    <Window.Resources>
+        <Style x:Key="NavBouton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1565C0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavBoutonDeconnexion" TargetType="Button" BasedOn="{StaticResource NavBouton}">
+            <Setter Property="Foreground" Value="#FFCDD2"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B71C1C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -15,18 +52,18 @@
         <Border Grid.Column="0" Background="#1976D2">
             <StackPanel Margin="0,20,0,0">
 
-                <TextBlock Text="🏥 UrgenceTech"
+                <TextBlock Text="UrgenceTech"
                            FontSize="16"
                            FontWeight="Bold"
                            Foreground="White"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,30"/>
 
-                <Button Content="📊  Tableau de bord"
+                <Button Content="Tableau de bord"
                         Style="{StaticResource NavBouton}"
                         Click="NavTableauDeBord_Click"/>
 
-                <Button Content="🚨  Urgences"
+                <Button Content="Urgences"
                         Style="{StaticResource NavBouton}"
                         Click="NavUrgences_Click"/>
 

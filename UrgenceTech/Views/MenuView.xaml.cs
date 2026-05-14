@@ -44,6 +44,7 @@ namespace UrgenceTech.Views
 
         private void Deconnexion_Click(object sender, RoutedEventArgs e)
         {
+            AuthService.SeDeconnecter();
             var login = new LoginView();
             login.Show();
             this.Close();
@@ -64,5 +65,17 @@ namespace UrgenceTech.Views
             });
         }
 
+
+        public void OuvrirCreerUrgence()
+        {
+            var vue = new CreerUrgenceView();
+            vue.ShowDialog();
+        }
+
+        public void OuvrirUrgencesEnCours()
+        {
+            var vue = new UrgencesEnCoursView();
+            vue.ShowDialog();
+        }
     }
 }
