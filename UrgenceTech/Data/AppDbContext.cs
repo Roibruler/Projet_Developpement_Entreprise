@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using UrgenceTech.Models;
 
 namespace UrgenceTech.Data
@@ -16,52 +15,30 @@ namespace UrgenceTech.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            string motDePasseHash = BCrypt.Net.BCrypt.HashPassword("admin123");
-
             modelBuilder.Entity<Utilisateur>().HasData(
                 new Utilisateur
                 {
                     ID = 1,
                     NomComplet = "Admin Test",
                     Courriel = "admin@urgencetech.com",
-                    MotDePasse = motDePasseHash,
+                    MotDePasse = "admin123",
                     Role = "Administrateur",
                     Status = true
                 }
             );
 
-            modelBuilder.Entity<Urgence>().HasData(
-                new Urgence
-                {
-                    ID = 1,
-                    Titre = "Patient en arrêt cardiaque",
-                    Description = "Patient de 65 ans",
-                    Priorite = "Critique",
-                    Statut = "Ouverte",
-                    DateCreation = new DateTime(2026, 5, 3),
-                    UtilisateurID = 1
-                },
-                new Urgence
-                {
-                    ID = 2,
-                    Titre = "Fracture du bras",
-                    Description = "Patient de 25 ans",
-                    Priorite = "Moyenne",
-                    Statut = "En cours",
-                    DateCreation = new DateTime(2026, 5, 3),
-                    UtilisateurID = 1
-                },
-                new Urgence
-                {
-                    ID = 3,
-                    Titre = "Allergie alimentaire",
-                    Description = "Patient de 10 ans",
-                    Priorite = "Haute",
-                    Statut = "Résolue",
-                    DateCreation = new DateTime(2026, 5, 3),
-                    UtilisateurID = 1
-                }
-            );
+            modelBuilder.Entity<Urgence>()
+                .HasOne(u => u.Utilisateur)
+                .WithMany()
+                .HasForeignKey(u => u.UtilisateurID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Urgence>()
+                .HasOne(u => u.TechnicienAssigne)
+                .WithMany()
+                .HasForeignKey(u => u.TechnicienAssigneID)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
         }
     }
 }
