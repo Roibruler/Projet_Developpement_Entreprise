@@ -6,7 +6,6 @@
         Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
 
-    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
     <Window.Resources>
         <Style x:Key="NavBouton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -43,7 +42,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -67,15 +66,15 @@
                         Style="{StaticResource NavBouton}"
                         Click="NavUrgences_Click"/>
 
-                <Button Content="👤  Utilisateurs"
+                <Button Content="Utilisateurs"
                         Style="{StaticResource NavBouton}"
                         Click="NavUtilisateurs_Click"/>
 
-                <Button Content="👥  Consultation Liste"
+                <Button Content="Consultation Liste"
                     Style="{StaticResource NavBouton}"
                     Click="NavConsultation_Click"/>
                 
-                <Button Content="🚪  Déconnexion"
+                <Button Content="Déconnexion"
                         Style="{StaticResource NavBoutonDeconnexion}"
                         Click="Deconnexion_Click"/>
 

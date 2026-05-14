@@ -52,7 +52,7 @@ namespace UrgenceTech
             ServiceProvider = services.BuildServiceProvider();
             // Show main window from service provider
 
-            context.Database.Migrate();
+            //context.Database.Migrate();
 
             var mainWindow = new MainWindow
             {
