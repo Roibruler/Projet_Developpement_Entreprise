@@ -1,13 +1,24 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
     public partial class SignUp : Page
     {
+        private CritèreViewModel _criteriaViewModel;
+
         public SignUp()
         {
             InitializeComponent();
+            _criteriaViewModel = new CritèreViewModel();
+            DataContext = _criteriaViewModel;
         }
 
         private async void CreerCompteBTN_Click(object sender, RoutedEventArgs e)
@@ -67,5 +78,22 @@ namespace UrgenceTech.Views
             loginWindow.Show();
             Window.GetWindow(this)?.Close();
         }
+
+        private void MotPasse_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CriètreMotDePasse.Visibility = Visibility.Visible;
+        }
+
+        private void MotPasse_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CriètreMotDePasse.Visibility = Visibility.Collapsed;
+        }
+
+        private void MotPasse_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            _criteriaViewModel.MotDePasse = MotPasse.Password;
+        }
+
+
     }
 }

@@ -1,70 +1,106 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
-using UrgenceTech.Data;
+using CommunityToolkit.Mvvm.Input;
 using UrgenceTech.Models;
 using UrgenceTech.Repositories;
 
 namespace UrgenceTech.ViewModels
 {
-    internal partial class UrgenceViewModel : ObservableObject
+
+    public partial class UrgenceViewModel : ObservableObject
     {
-        private readonly IUrgenceRepository _repository;
+        private readonly IUrgenceRepository _urgenceRepo;
 
-        private List<Urgence> _toutesLesUrgences = new();
+        public UrgenceViewModel() : this(new UrgenceRepository()) { }
 
-        [ObservableProperty]
-        private ObservableCollection<Urgence> urgencesFiltrees = new();
-
-        [ObservableProperty]
-        private string filtreStatut = "Tous";
-
-        [ObservableProperty]
-        private string filtrePriorite = "Tous";
-
-        [ObservableProperty]
-        private string texteRecherche = string.Empty;
-
-        public UrgenceViewModel()
+        public UrgenceViewModel(IUrgenceRepository urgenceRepo)
         {
-            _repository = new UrgenceRepository(new AppDbContext());
-            _ = ChargerUrgencesAsync();
+            _urgenceRepo = urgenceRepo;
+            ChargerUrgencesEnCours();
         }
 
-        private async Task ChargerUrgencesAsync()
+        [ObservableProperty]
+        private ObservableCollection<Urgence> urgencesEnCours = new();
+
+        [ObservableProperty]
+        private Urgence? urgenceSelectionnee;
+
+        [ObservableProperty]
+        private string messageVue = string.Empty;
+        [RelayCommand]
+        private void ChargerUrgencesEnCours()
         {
-            _toutesLesUrgences = await _repository.ObtenirToutesAsync();
-            AppliquerFiltres();
+            UrgencesEnCours.Clear();
+            MessageVue = string.Empty;
+
+            var liste = _urgenceRepo.ObtenirUrgencesEnCours();
+
+            foreach (var u in liste)
+                UrgencesEnCours.Add(u);
+
+            if (UrgencesEnCours.Count == 0)
+                MessageVue = "Aucune urgence en cours pour le moment.";
         }
 
-        private void AppliquerFiltres() 
+        [ObservableProperty]
+        private string titre = string.Empty;
+
+        [ObservableProperty]
+        private string description = string.Empty;
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(CreerUrgenceCommand))]
+        private string prioriteSelectionnee = "Moyen";
+
+        [ObservableProperty]
+        private string messageCreation = string.Empty;
+
+        [ObservableProperty]
+        private bool creationReussie;
+        public static IReadOnlyList<string> Priorites { get; } =
+            new[] { "Faible", "Moyen", "Élevé", "Critique" };
+
+        private bool PeutCreer() =>
+            !string.IsNullOrWhiteSpace(Titre) &&
+            AuthService.UtilisateurConnecte != null;
+
+        [RelayCommand(CanExecute = nameof(PeutCreer))]
+        private void CreerUrgence()
         {
-            var resultat = _toutesLesUrgences.AsEnumerable();
+            MessageCreation = string.Empty;
+            CreationReussie = false;
 
-            
-            if (FiltreStatut != "Tous")
-                resultat = resultat.Where(u => u.Statut == FiltreStatut);
+            if (string.IsNullOrWhiteSpace(Titre))
+            {
+                MessageCreation = "Le titre est obligatoire.";
+                return;
+            }
 
-            
-            if (FiltrePriorite != "Tous")
-                resultat = resultat.Where(u => u.Priorite == FiltrePriorite);
+            if (AuthService.UtilisateurConnecte == null)
+            {
+                MessageCreation = "Vous devez être connecté pour créer une urgence.";
+                return;
+            }
 
-            
-            if (!string.IsNullOrWhiteSpace(TexteRecherche))
-                resultat = resultat.Where(u =>
-                    (u.Titre != null && u.Titre.Contains(TexteRecherche, StringComparison.OrdinalIgnoreCase)) ||
-                    u.ID.ToString().Contains(TexteRecherche));
+            var urgence = _urgenceRepo.CreerUrgence(
+                titre: Titre.Trim(),
+                description: Description.Trim(),
+                priorite: PrioriteSelectionnee,
+                utilisateurId: AuthService.UtilisateurConnecte.ID
+            );
 
-            UrgencesFiltrees = new ObservableCollection<Urgence>(resultat);
+            if (urgence == null)
+            {
+                MessageCreation = "Erreur lors de la création. Veuillez réessayer.";
+                return;
+            }
+
+            MessageCreation = $"Urgence « {urgence.Titre} » créée avec succès (#{urgence.ID}).";
+            CreationReussie = true;
+            Titre = string.Empty;
+            Description = string.Empty;
+            PrioriteSelectionnee = "Moyen";
         }
-
-        partial void OnFiltreStatutChanged(string value) => AppliquerFiltres();
-        partial void OnFiltrePrioriteChanged(string value) => AppliquerFiltres();
-        partial void OnTexteRechercheChanged(string value) => AppliquerFiltres();
-
     }
 }

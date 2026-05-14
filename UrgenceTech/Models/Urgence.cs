@@ -1,27 +1,47 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UrgenceTech.Models
 {
+
     public class Urgence
     {
         public int ID { get; set; }
-
         [Required]
         [MaxLength(200)]
         public string? Titre { get; set; }
 
+        [MaxLength(1000)]
         public string? Description { get; set; }
 
         [Required]
-        public string? Priorite { get; set; }
+        [MaxLength(50)]
+        public string Statut { get; set; } = "En attente";
 
-        [Required]
-        public string? Statut { get; set; } = "Ouverte";
-
+        [MaxLength(20)]
+        public string Priorite { get; set; } = "Moyen";
         public DateTime DateCreation { get; set; } = DateTime.Now;
+        public DateTime? DateMiseAJour { get; set; }
 
         public int UtilisateurID { get; set; }
+
+        [ForeignKey(nameof(UtilisateurID))]
         public Utilisateur? Utilisateur { get; set; }
+        public int? TechnicienAssigneID { get; set; }
+
+        [ForeignKey(nameof(TechnicienAssigneID))]
+        public Utilisateur? TechnicienAssigne { get; set; }
+
+        public (bool estValide, string messageErreur) EstValide()
+        {
+            if (string.IsNullOrWhiteSpace(Titre))
+                return (false, "Le titre est obligatoire.");
+
+            if (string.IsNullOrWhiteSpace(Priorite))
+                return (false, "La priorité est obligatoire.");
+
+            return (true, string.Empty);
+        }
     }
 }

@@ -1,51 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UrgenceTech.Data;
 using UrgenceTech.Models;
 
 namespace UrgenceTech.Repositories
 {
-    internal class UrgenceRepository : IUrgenceRepository
+    public class UrgenceRepository : IUrgenceRepository
     {
-        private readonly AppDbContext _context;
 
-        public UrgenceRepository(AppDbContext context)
+        public static readonly string[] StatutsValides =
+            { "En attente", "En cours", "Résolu", "Annulé" };
+        public Urgence? CreerUrgence(string titre, string description, string priorite, int utilisateurId)
         {
-            _context = context;
+            if (string.IsNullOrWhiteSpace(titre))
+                return null;
+
+            var urgence = new Urgence
+            {
+                Titre = titre.Trim(),
+                Description = description?.Trim(),
+                Priorite = priorite ?? "Moyen",
+                Statut = "En attente",
+                DateCreation = DateTime.Now,
+                UtilisateurID = utilisateurId
+            };
+
+            using var context = new AppDbContext();
+            context.Urgences.Add(urgence);
+            context.SaveChanges();
+
+            return urgence;
         }
-
-        // Urgences avec leur utilisateur
-        public async Task<List<Urgence>> ObtenirToutesAsync()
+        public IEnumerable<Urgence> ObtenirUrgencesEnCours()
         {
-            return await _context.Urgences
+            using var context = new AppDbContext();
+            return context.Urgences
                 .Include(u => u.Utilisateur)
+                .Include(u => u.TechnicienAssigne)
+                .Where(u => u.Statut == "En cours")
                 .OrderByDescending(u => u.DateCreation)
-                .ToListAsync();
+                .ToList();
         }
 
-        // Urgences filtrées par statut
-        public async Task<List<Urgence>> ObtenirParStatutAsync(string statut)
+        public IEnumerable<Urgence> ObtenirToutesUrgences()
         {
-            return await _context.Urgences
+            using var context = new AppDbContext();
+            return context.Urgences
                 .Include(u => u.Utilisateur)
-                .Where(u => u.Statut == statut)
+                .Include(u => u.TechnicienAssigne)
                 .OrderByDescending(u => u.DateCreation)
-                .ToListAsync();
+                .ToList();
         }
 
-        // Urgences filtrées par priorité
-        public async Task<List<Urgence>> ObtenirParPrioriteAsync(string priorite)
+        public Urgence? ObtenirParId(int id)
         {
-            return await _context.Urgences
+            using var context = new AppDbContext();
+            return context.Urgences
                 .Include(u => u.Utilisateur)
-                .Where(u => u.Priorite == priorite)
-                .OrderByDescending(u => u.DateCreation)
-                .ToListAsync();
+                .Include(u => u.TechnicienAssigne)
+                .FirstOrDefault(u => u.ID == id);
         }
+        public bool MettreAJourStatut(int urgenceId, string nouveauStatut)
+        {
+            if (!StatutsValides.Contains(nouveauStatut))
+                return false;
 
+            using var context = new AppDbContext();
+            var urgence = context.Urgences.FirstOrDefault(u => u.ID == urgenceId);
+
+            if (urgence == null)
+                return false;
+
+            urgence.Statut = nouveauStatut;
+            urgence.DateMiseAJour = DateTime.Now;
+            context.SaveChanges();
+
+            return true;
+        }
+        public bool AnnulerUrgence(int urgenceId)
+            => MettreAJourStatut(urgenceId, "Annulé");
     }
 }

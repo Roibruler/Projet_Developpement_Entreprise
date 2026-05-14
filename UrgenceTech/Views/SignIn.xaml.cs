@@ -1,25 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using UrgenceTech.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace UrgenceTech.Views
 {
 
-    public partial class SignIn : Page
+    internal partial class SignIn : Page
     {
         
         private const int MaxTentatives = 5;
-
-        
         private const int DureeVerrouillage = 15;
 
-        public SignIn()
+        private readonly AppDbContext _context;
+
+        internal SignIn(AppDbContext context)
         {
             InitializeComponent();
+            _context = context;
+
         }
 
         private async void SignInBtn_Click(object sender, RoutedEventArgs e)
@@ -38,9 +41,7 @@ namespace UrgenceTech.Views
                 // Timer pour afficher que le spinner fonctionne vous pouvez le delete si vous voulez plus tard. ༼ つ ◕_◕ ༽つ
                 await Task.Delay(3000);
 
-                using var context = new AppDbContext();
-
-                var utilisateur = await context.Utilisateurs
+                var utilisateur = await _context.Utilisateurs
                     .FirstOrDefaultAsync(u => u.Courriel == Email.Text);
 
                 if (utilisateur == null)
@@ -63,7 +64,7 @@ namespace UrgenceTech.Views
                     {
                         utilisateur.DateVerrouillage = null;
                         utilisateur.TentativesEchouees = 0;
-                        await context.SaveChangesAsync();
+                        await _context.SaveChangesAsync();
                     }
                 }
 
@@ -74,22 +75,22 @@ namespace UrgenceTech.Views
                     if (utilisateur.TentativesEchouees >= MaxTentatives)
                     {
                         utilisateur.DateVerrouillage = DateTime.Now;
-                        await context.SaveChangesAsync();
+                        await _context.SaveChangesAsync();
                         AfficherErreur("Compte verrouillé après 5 tentatives. Réessayez dans 15 minutes.");
                         return;
                     }
 
                     int tentativesRestantes = MaxTentatives - utilisateur.TentativesEchouees;
-                    await context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     AfficherErreur($"Mot de passe incorrect. {tentativesRestantes} tentative(s) restante(s).");
                     return;
                 }
 
                 utilisateur.TentativesEchouees = 0;
                 utilisateur.DateVerrouillage = null;
-                await context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
-                NavigationService.Navigate(new Test());
+   
             }
             finally
             {
