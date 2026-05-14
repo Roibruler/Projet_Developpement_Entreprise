@@ -6,7 +6,6 @@
         Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
 
-    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
     <Window.Resources>
         <Style x:Key="NavBouton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -43,7 +42,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid MouseMove="OnUserActivity" KeyDown="OnUserActivity">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>

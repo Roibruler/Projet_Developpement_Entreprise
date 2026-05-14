@@ -26,33 +26,25 @@ namespace UrgenceTech
             ShutdownMode = ShutdownMode.OnLastWindowClose;
 
             //injection de Dépendance
-           
+
             var services = new ServiceCollection();
 
             //Registrer Base de Donné
             using var context = new AppDbContext();
             services.AddDbContext<AppDbContext>();
 
-         
-
             // Register ViewModels
             services.AddTransient<SessionManagerViewModel>();
             //Registre Views
-            services.AddTransient<VoirUtilisateurView>();
-            services.AddTransient<SignIn>();
             services.AddTransient<SignIn>(sp =>
                 new SignIn(sp.GetRequiredService<AppDbContext>())
             );
-
-
             //Registrer Singleton
             services.AddSingleton<SessionManager>();
 
-
             ServiceProvider = services.BuildServiceProvider();
             // Show main window from service provider
-
-            context.Database.Migrate();
+            //context.Database.Migrate();
 
             var mainWindow = new MainWindow
             {

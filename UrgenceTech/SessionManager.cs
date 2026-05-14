@@ -9,7 +9,7 @@ namespace UrgenceTech
     public class SessionManager
     {
 
-        private TimeSpan SessionTimeout = TimeSpan.FromMinutes(1); //(test) idle pour juste 1 minute, va être changer
+        private TimeSpan SessionTimeout = TimeSpan.FromMinutes(30); //(test) idle pour juste 1 minute, va être changer
         private Timer inactivityTimer;
         public event Action SessionExpired;
         private bool expired;
