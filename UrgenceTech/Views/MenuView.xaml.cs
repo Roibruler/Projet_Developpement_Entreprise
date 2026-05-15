@@ -1,25 +1,24 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using UrgenceTech.Models;
 using UrgenceTech.ViewModels;
+using UrgenceTech.Views;
 
 namespace UrgenceTech.Views
 {
     public partial class MenuView : Window
     {
+        private readonly Utilisateur _utilisateurConnecte;
+        private readonly SessionManagerViewModel _sessionManagerViewModel;
 
-        private SessionManagerViewModel _sessionManagerViewModel;
-
-        public MenuView(SessionManagerViewModel sessionManagerViewModel)
+        public MenuView(Utilisateur utilisateur, SessionManagerViewModel sessionManagerViewModel)
         {
             InitializeComponent();
-            ContenuPrincipal.Content = new TableauDeBordView();
-
+            _utilisateurConnecte = utilisateur;
             _sessionManagerViewModel = sessionManagerViewModel;
             DataContext = _sessionManagerViewModel;
-
             _sessionManagerViewModel.SessionExpired += OnSessionExpired;
-
-
+            ContenuPrincipal.Content = new TableauDeBordView();
         }
 
         private void NavTableauDeBord_Click(object sender, RoutedEventArgs e)
@@ -34,12 +33,16 @@ namespace UrgenceTech.Views
 
         private void NavUtilisateurs_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void NavConsultation_Click(object sender, RoutedEventArgs e)
         {
             ContenuPrincipal.Content = new VoirUtilisateurView();
+        }
+
+        private void NavProfil_Click(object sender, RoutedEventArgs e)
+        {
+            ContenuPrincipal.Content = new ProfilView(_utilisateurConnecte);
         }
 
         private void Deconnexion_Click(object sender, RoutedEventArgs e)
@@ -55,7 +58,6 @@ namespace UrgenceTech.Views
             _sessionManagerViewModel.UserActivity();
         }
 
-
         private void OnSessionExpired()
         {
             Dispatcher.Invoke(() =>
@@ -64,7 +66,6 @@ namespace UrgenceTech.Views
                 System.Windows.Application.Current.Shutdown();
             });
         }
-
 
         public void OuvrirCreerUrgence()
         {

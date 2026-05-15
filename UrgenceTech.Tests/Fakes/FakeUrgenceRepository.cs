@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UrgenceTech.Models;
+﻿using UrgenceTech.Models;
 using UrgenceTech.Repositories;
 
 namespace UrgenceTech.Tests.Fakes
@@ -47,7 +42,6 @@ namespace UrgenceTech.Tests.Fakes
             return _urgences.FirstOrDefault(u => u.ID == id);
         }
 
-
         public bool MettreAJourStatut(int urgenceId, string nouveauStatut)
         {
             var urgence = _urgences.FirstOrDefault(u => u.ID == urgenceId);
@@ -57,7 +51,6 @@ namespace UrgenceTech.Tests.Fakes
             return true;
         }
 
-        
         public bool AnnulerUrgence(int urgenceId)
         {
             var urgence = _urgences.FirstOrDefault(u => u.ID == urgenceId);

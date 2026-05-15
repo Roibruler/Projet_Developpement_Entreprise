@@ -18,14 +18,15 @@ namespace UrgenceTech.Models
         [Required]
         public string? MotDePasse { get; set; }
 
-        public bool Status { get; set; } = true;
-
         [Required]
-        [MaxLength(100)]
         public string? Role { get; set; }
+
+        public bool Status { get; set; } = true;
 
         public int TentativesEchouees { get; set; } = 0;
 
         public DateTime? DateVerrouillage { get; set; }
+
+        public DateTime DateCreation { get; set; } = DateTime.Now;
     }
 }

@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {}
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
         "projectName": "UrgenceTech.Tests",
-        "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
-        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\obj\\",
+        "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+        "packagesPath": "C:\\Users\\HBadr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HBadr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +23,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -30,8 +30,8 @@
             "framework": "net8.0-windows7.0",
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj": {
-                "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj"
+              "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj": {
+                "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj"
               }
             }
           }
@@ -53,10 +53,6 @@
           "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[8.0.25, )"
-            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[18.5.1, )"
@@ -101,17 +97,18 @@
         }
       }
     },
-    "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj": {
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj",
+        "projectUniqueName": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj",
         "projectName": "UrgenceTech",
-        "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj",
-        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\obj\\",
+        "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj",
+        "packagesPath": "C:\\Users\\HBadr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HBadr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -119,7 +116,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
