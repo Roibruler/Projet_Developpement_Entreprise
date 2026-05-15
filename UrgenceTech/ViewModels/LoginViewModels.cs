@@ -55,7 +55,7 @@ namespace UrgenceTech.ViewModels
                     return;
                 }
 
-                var menu = new MenuView();
+                var menu = new MenuView(utilisateur);
                 menu.Show();
 
                 foreach (Window window in Application.Current.Windows)

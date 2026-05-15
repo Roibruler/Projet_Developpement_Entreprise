@@ -33,11 +33,14 @@
                 <Button Content="👥  Utilisateurs"
                         Style="{StaticResource NavBouton}"
                         Click="NavUtilisateurs_Click"/>
-
+				
+				<Button Content="👤  Mon profil"
+                        Style="{StaticResource NavBouton}"
+                        Click="NavProfil_Click"/>
+				
                 <Button Content="🚪  Déconnexion"
                         Style="{StaticResource NavBoutonDeconnexion}"
                         Click="Deconnexion_Click"/>
-
             </StackPanel>
         </Border>
 
