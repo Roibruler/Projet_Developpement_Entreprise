@@ -145,3 +145,9 @@ C:\Users\HBadr\OneDrive\Bureau\Dev-app\UrgenceTech.Tests\obj\Debug\net8.0-window
 C:\Users\HBadr\OneDrive\Bureau\Dev-app\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.pdb
 C:\Users\HBadr\OneDrive\Bureau\Dev-app\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.genruntimeconfig.cache
 C:\Users\HBadr\OneDrive\Bureau\Dev-app\UrgenceTech.Tests\obj\Debug\net8.0-windows\ref\UrgenceTech.Tests.dll
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.csproj.AssemblyReference.cache
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.AssemblyInfoInputs.cache
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.AssemblyInfo.cs
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.csproj.CoreCompileInputs.cache
+C:\Users\elies\source\repos\FINAL\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.sourcelink.json
