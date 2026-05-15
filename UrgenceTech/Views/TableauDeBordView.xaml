@@ -35,6 +35,30 @@
                                    Foreground="#1976D2"/>
                     </StackPanel>
                 </Border>
+                
+                <Border Background="#E8F5E9" CornerRadius="8" Padding="20" MinWidth="180" Margin="0,0,15,0">
+                    <StackPanel>
+                        <TextBlock Text="Résolues aujourd'hui"
+                       FontSize="13"
+                       Foreground="#546E7A"/>
+                        <TextBlock Text="{Binding NombreUrgencesResoluesAujourdhui}"
+                       FontSize="40"
+                       FontWeight="Bold"
+                       Foreground="#388E3C"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#FFF3E0" CornerRadius="8" Padding="20" MinWidth="180">
+                    <StackPanel>
+                        <TextBlock Text="Utilisateurs actifs"
+                       FontSize="13"
+                       Foreground="#546E7A"/>
+                        <TextBlock Text="{Binding NombreUtilisateursConnectes}"
+                       FontSize="40"
+                       FontWeight="Bold"
+                       Foreground="#F57C00"/>
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
 

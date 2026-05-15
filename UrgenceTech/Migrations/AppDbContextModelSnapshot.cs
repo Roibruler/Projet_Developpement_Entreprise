@@ -50,6 +50,38 @@ namespace UrgenceTech.Migrations
                     b.HasIndex("UtilisateurID");
 
                     b.ToTable("Urgences");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DateCreation = new DateTime(2026, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Patient de 65 ans",
+                            Priorite = "Critique",
+                            Statut = "Ouverte",
+                            Titre = "Patient en arrêt cardiaque",
+                            UtilisateurID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DateCreation = new DateTime(2026, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Patient de 25 ans",
+                            Priorite = "Moyenne",
+                            Statut = "En cours",
+                            Titre = "Fracture du bras",
+                            UtilisateurID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            DateCreation = new DateTime(2026, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Patient de 10 ans",
+                            Priorite = "Haute",
+                            Statut = "Résolue",
+                            Titre = "Allergie alimentaire",
+                            UtilisateurID = 1
+                        });
                 });
 
             modelBuilder.Entity("UrgenceTech.Models.Utilisateur", b =>
@@ -98,7 +130,7 @@ namespace UrgenceTech.Migrations
                             ID = 1,
                             Courriel = "admin@urgencetech.com",
                             DateCreation = new DateTime(2026, 5, 14, 22, 13, 28, 653, DateTimeKind.Local).AddTicks(2875),
-                            MotDePasse = "$2a$11$w8j5zFfQT.956188WWkAM.UPNYsP2vfKxtXBSSRrkjtq2NVe64CVe",
+                            MotDePasse = "$2a$11$/tdtO3tuFuyHRESnyv5nt.2LvVMotgUJ/bKg723svIPhFIb4CLdma",
                             NomComplet = "Admin Test",
                             Role = "Administrateur",
                             Status = true,

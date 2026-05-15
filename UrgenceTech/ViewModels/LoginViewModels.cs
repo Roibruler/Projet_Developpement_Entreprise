@@ -55,7 +55,12 @@ namespace UrgenceTech.ViewModels
                     return;
                 }
 
-                var menu = new MenuView(utilisateur);
+                var sessionManager = new SessionManager();
+                sessionManager.StartSession();
+
+                var sessionManagerViewModel = new SessionManagerViewModel(sessionManager);
+
+                var menu = new MenuView(utilisateur, sessionManagerViewModel);
                 menu.Show();
 
                 foreach (Window window in Application.Current.Windows)

@@ -1,0 +1,74 @@
+<Window x:Class="UrgenceTech.Views.CreerUrgenceView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:UrgenceTech.ViewModels"
+        Title="UrgenceTech - Creer une urgence"
+        Height="480" Width="480"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Window.DataContext>
+        <vm:UrgenceViewModel />
+    </Window.DataContext>
+
+    <Grid Background="#F5F5F5" Margin="30">
+        <StackPanel>
+
+            <TextBlock Text="Nouvelle urgence"
+                       FontSize="24" FontWeight="Bold"
+                       Foreground="#D32F2F"
+                       Margin="0,0,0,4"/>
+            <Separator Margin="0,0,0,16"/>
+
+            <TextBlock Text="Titre *"
+                       FontSize="13" FontWeight="SemiBold"
+                       Margin="0,0,0,4"/>
+            <TextBox Text="{Binding Titre, UpdateSourceTrigger=PropertyChanged}"
+                     Height="36" Padding="8,6" FontSize="13"
+                     BorderBrush="#BDBDBD" BorderThickness="1"
+                     Margin="0,0,0,12"/>
+
+            <TextBlock Text="Description"
+                       FontSize="13" FontWeight="SemiBold"
+                       Margin="0,0,0,4"/>
+            <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                     Height="100"
+                     AcceptsReturn="True" TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     Padding="8,6" FontSize="13"
+                     BorderBrush="#BDBDBD" BorderThickness="1"
+                     Margin="0,0,0,12"/>
+
+            <TextBlock Text="Priorite"
+                       FontSize="13" FontWeight="SemiBold"
+                       Margin="0,0,0,4"/>
+            <ComboBox ItemsSource="{x:Static vm:UrgenceViewModel.Priorites}"
+                      SelectedItem="{Binding PrioriteSelectionnee}"
+                      Height="36" Padding="8,6" FontSize="13"
+                      Margin="0,0,0,20"/>
+
+            <Button Content="Creer l'urgence"
+                    Command="{Binding CreerUrgenceCommand}"
+                    Height="42" FontSize="14" FontWeight="SemiBold"
+                    Background="#D32F2F" Foreground="White"
+                    BorderThickness="0" Cursor="Hand"/>
+
+            <TextBlock Text="{Binding MessageCreation}"
+                       FontSize="12" TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#D32F2F"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CreationReussie}" Value="True">
+                                <Setter Property="Foreground" Value="#388E3C"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</Window>
