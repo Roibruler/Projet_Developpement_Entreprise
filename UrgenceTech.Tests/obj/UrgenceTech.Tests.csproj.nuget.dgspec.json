@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {}
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
         "projectName": "UrgenceTech.Tests",
-        "projectPath": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
-        "packagesPath": "C:\\Users\\adamr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech.Tests\\obj\\",
+        "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+        "packagesPath": "C:\\Users\\HBadr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\adamr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HBadr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,11 +26,12 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
+          "net8.0-windows": {
+            "framework": "net8.0-windows7.0",
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\UrgenceTech.csproj": {
-                "projectPath": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\UrgenceTech.csproj"
+              "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj": {
+                "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj"
               }
             }
           }
@@ -44,16 +46,13 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[18.5.1, )"
@@ -94,21 +93,22 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\UrgenceTech.csproj": {
+    "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\UrgenceTech.csproj",
+        "projectUniqueName": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj",
         "projectName": "UrgenceTech",
-        "projectPath": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\UrgenceTech.csproj",
-        "packagesPath": "C:\\Users\\adamr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adamr\\OneDrive\\Bureau\\Développement_Entreprise\\Roibruler\\Projet_Developpement_Entreprise\\UrgenceTech\\obj\\",
+        "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj",
+        "packagesPath": "C:\\Users\\HBadr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\adamr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HBadr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -119,7 +119,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
+          "net8.0-windows": {
+            "framework": "net8.0-windows7.0",
             "targetAlias": "net8.0-windows",
             "projectReferences": {}
           }
@@ -134,10 +135,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
             "BCrypt.Net-Next": {
@@ -182,7 +184,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
