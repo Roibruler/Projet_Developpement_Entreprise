@@ -1,64 +1,150 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UrgenceTech.Data;
 
 namespace UrgenceTech.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour SignIn.xaml
-    /// </summary>
-    public partial class SignIn : Page
+
+    internal partial class SignIn : Page
     {
-        public SignIn()
+        
+        private const int MaxTentatives = 5;
+        private const int DureeVerrouillage = 15;
+
+        private readonly AppDbContext _context;
+
+        internal SignIn(AppDbContext context)
         {
             InitializeComponent();
+            _context = context;
+
         }
 
-        private void SignInBtn_Click(object sender, RoutedEventArgs e)
+        private async void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
+            
+            ErreurBorder.Visibility = Visibility.Collapsed;
             MessageErreur.Text = string.Empty;
 
-            if (!IsEmailValid()) 
-            { 
-                return; 
-            }
+            if (!IsEmailValid()) return;
+            if (!IsPasswordValid()) return;
 
-            if (!IsPasswordValid())
+            DemarrerChargement();
+
+            try
             {
-                return;
-            }
+                // Timer pour afficher que le spinner fonctionne vous pouvez le delete si vous voulez plus tard. ༼ つ ◕_◕ ༽つ
+                await Task.Delay(3000);
 
-            NavigationService.Navigate(new Test()); // Aller à la page d'accueil après une connexion réussie
+                var utilisateur = await _context.Utilisateurs
+                    .FirstOrDefaultAsync(u => u.Courriel == Email.Text);
+
+                if (utilisateur == null)
+                {
+                    AfficherErreur("Identifiants incorrects.");
+                    return;
+                }
+
+                if (utilisateur.DateVerrouillage.HasValue)
+                {
+                    var tempsRestant = utilisateur.DateVerrouillage.Value
+                        .AddMinutes(DureeVerrouillage) - DateTime.Now;
+
+                    if (tempsRestant.TotalMinutes > 0)
+                    {
+                        AfficherErreur($"Compte verrouillé. Réessayez dans {(int)tempsRestant.TotalMinutes + 1} minute(s).");
+                        return;
+                    }
+                    else
+                    {
+                        utilisateur.DateVerrouillage = null;
+                        utilisateur.TentativesEchouees = 0;
+                        await _context.SaveChangesAsync();
+                    }
+                }
+
+                if (utilisateur.MotDePasse != MotPasse.Password)
+                {
+                    utilisateur.TentativesEchouees++;
+
+                    if (utilisateur.TentativesEchouees >= MaxTentatives)
+                    {
+                        utilisateur.DateVerrouillage = DateTime.Now;
+                        await _context.SaveChangesAsync();
+                        AfficherErreur("Compte verrouillé après 5 tentatives. Réessayez dans 15 minutes.");
+                        return;
+                    }
+
+                    int tentativesRestantes = MaxTentatives - utilisateur.TentativesEchouees;
+                    await _context.SaveChangesAsync();
+                    AfficherErreur($"Mot de passe incorrect. {tentativesRestantes} tentative(s) restante(s).");
+                    return;
+                }
+
+                utilisateur.TentativesEchouees = 0;
+                utilisateur.DateVerrouillage = null;
+                await _context.SaveChangesAsync();
+
+   
+            }
+            finally
+            {
+                ArreterChargement();
+            }
         }
 
         private void GoToSignUpBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new SignUp());
+        }
 
+        // ---------------------------------------------------------------
+        // Affiche l'overlay spinner et désactive le bouton de connexion
+        // ---------------------------------------------------------------
+        private void DemarrerChargement()
+        {
+            ChargementOverlay.Visibility = Visibility.Visible;
+            SignInBtn.IsEnabled = false;
+        }
+
+        // ---------------------------------------------------------------
+        // Masque l'overlay spinner et réactive le bouton de connexion
+        // ---------------------------------------------------------------
+        private void ArreterChargement()
+        {
+            ChargementOverlay.Visibility = Visibility.Collapsed;
+            SignInBtn.IsEnabled = true;
+        }
+
+        // Affiche la boîte rouge avec le message d'erreur
+        private void AfficherErreur(string message)
+        {
+            MessageErreur.Text = message;
+            ErreurBorder.Visibility = Visibility.Visible;
         }
 
         private bool IsEmailValid()
         {
-            if (string.IsNullOrEmpty(Email.Text) || !IsValidEmailFormat())
+            if (string.IsNullOrEmpty(Email.Text))
             {
-                MessageErreur.Text = "Le courriel est invalide.";
+                AfficherErreur("Veuillez entrer votre courriel.");
+                return false;
+            }
+
+            if (!IsValidEmailFormat())
+            {
+                AfficherErreur("Format d'email invalide.");
                 return false;
             }
 
             if (Email.Text.Length > 100)
             {
-                MessageErreur.Text = "Le courriel est trop long.";
+                AfficherErreur("Le courriel est trop long.");
                 return false;
             }
 
@@ -69,13 +155,19 @@ namespace UrgenceTech.Views
         {
             if (string.IsNullOrEmpty(MotPasse.Password))
             {
-                MessageErreur.Text = "Le mot de passe est invalide.";
+                AfficherErreur("Veuillez entrer votre mot de passe.");
+                return false;
+            }
+
+            if (MotPasse.Password.Length < 8)
+            {
+                AfficherErreur("Le mot de passe doit contenir au moins 8 caractères.");
                 return false;
             }
 
             if (MotPasse.Password.Length > 50)
             {
-                MessageErreur.Text = "Le mot de passe est trop long.";
+                AfficherErreur("Le mot de passe est trop long.");
                 return false;
             }
 

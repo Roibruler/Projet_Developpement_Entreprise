@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Urgence_tech.Models
+namespace UrgenceTech.Models
 {
     public class Utilisateur
     {
@@ -13,19 +9,24 @@ namespace Urgence_tech.Models
 
         [Required]
         [MaxLength(100)]
-        public string NomComplet { get; set; }
+        public string? NomComplet { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Courriel { get; set; }
+        public string? Courriel { get; set; }
 
         [Required]
-        public string MotDePasse { get; set; }
+        public string? MotDePasse { get; set; }
+
+        [Required]
+        public string? Role { get; set; }
 
         public bool Status { get; set; } = true;
 
-        [Required]
-        [MaxLength(100)]
-        public string Role { get; set; }
+        public int TentativesEchouees { get; set; } = 0;
+
+        public DateTime? DateVerrouillage { get; set; }
+
+        public DateTime DateCreation { get; set; } = DateTime.Now;
     }
 }

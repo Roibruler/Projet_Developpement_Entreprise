@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.EntityFrameworkCore;
-using Urgence_tech.Data;
-using Urgence_tech.Views;
+using UrgenceTech.Views;
 
-namespace Urgence_tech.ViewModels
+namespace UrgenceTech.ViewModels
 {
     internal partial class LoginViewModels : ObservableObject
     {
         [ObservableProperty]
-        private string courriel = string.Empty;
+        private string? courriel = string.Empty;
 
         [ObservableProperty]
         private string motDePasse = string.Empty;
@@ -23,51 +17,65 @@ namespace Urgence_tech.ViewModels
         [ObservableProperty]
         private string messageErreur = string.Empty;
 
+        [ObservableProperty]
+        private bool estEnChargement = false;
+
         [RelayCommand]
         private async Task SeConnecter()
         {
-            // Effacer le message d'erreur précédent
             MessageErreur = string.Empty;
 
-            //Veriifer si les champs sont vides
-            if (string.IsNullOrEmpty(courriel) || string.IsNullOrEmpty(motDePasse)) 
+            if (string.IsNullOrWhiteSpace(Courriel) || string.IsNullOrWhiteSpace(MotDePasse))
             {
                 MessageErreur = "Veuillez remplir tous les champs.";
                 return;
             }
 
-            //Chercher l'utilisateur dans la BD
-            using var context = new AppDbContext();
-
-            var utilisateur = await context.Utilisateurs
-                .FirstOrDefaultAsync(u => u.Courriel == courriel
-                                    && u.MotDePasse == motDePasse
-                                    && u.Status == true);
-
-            
-            
-            //Identifiants incorrects
-            if (utilisateur == null)
+            if (!Courriel.Contains("@") || !Courriel.Contains("."))
             {
-                MessageErreur = "Identifiants incorrects.";
+                MessageErreur = "Format de courriel invalide.";
                 return;
             }
 
-            //Redirection vers la page principale 
-            
-            var menu = new MenuView();
-            menu.Show();
-
-            // Fermer la fenêtre Login
-            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
+            if (MotDePasse.Length < 8)
             {
-                if (window is LoginView)
+                MessageErreur = "Le mot de passe doit contenir au moins 8 caractères.";
+                return;
+            }
+
+            EstEnChargement = true;
+
+            try
+            {
+                var (utilisateur, erreur) = await AuthService.SeConnecterAsync(Courriel, MotDePasse);
+
+                if (utilisateur == null)
                 {
-                    window.Close();
-                    break;
+                    MessageErreur = erreur;
+                    return;
                 }
+
+                var sessionManager = new SessionManager();
+                sessionManager.StartSession();
+
+                var sessionManagerViewModel = new SessionManagerViewModel(sessionManager);
+
+                var menu = new MenuView(utilisateur, sessionManagerViewModel);
+                menu.Show();
+
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is LoginView)
+                    {
+                        window.Close();
+                        break;
+                    }
+                }
+            }
+            finally
+            {
+                EstEnChargement = false;
             }
         }
     }
-
 }

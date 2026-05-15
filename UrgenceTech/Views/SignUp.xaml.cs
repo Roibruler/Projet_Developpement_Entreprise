@@ -1,105 +1,99 @@
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
     public partial class SignUp : Page
     {
-        // (base de donne comme test pour les emails existants pour plustard faut le delete apres qu'on a une BD)
-        private static List<string> FakeDatabaseEmails = new List<string>()
-        {
-            "test@gmail.com",
-            "admin@urgence.com"
-        };
+        private CritèreViewModel _criteriaViewModel;
 
         public SignUp()
         {
             InitializeComponent();
+            _criteriaViewModel = new CritèreViewModel();
+            DataContext = _criteriaViewModel;
         }
 
-        private void CreateAccount_Click(object sender, RoutedEventArgs e)
+        private async void CreerCompteBTN_Click(object sender, RoutedEventArgs e)
         {
-            MessageErreur.Text = string.Empty;
+            MessageErreurCreationCompte.Text = string.Empty;
 
-            if (!IsEmailValid())
-                return;
+            string nomComplet = NomComplet.Text.Trim();
+            string courriel = Email.Text.Trim();
+            string motDePasse = MotPasse.Password;
+            string confirmation = ConfirmerMotPasse.Password;
 
-            if (!IsPasswordValid())
-                return;
-
-            if (EmailExists())
+            if (string.IsNullOrWhiteSpace(nomComplet))
             {
-                MessageErreur.Text =
-                    "Cet email existe déjà.\n" +
-                    "Veuillez vous connecter.\n" +
-                    "Ou utilisez 'Mot de passe oublié ?'";
+                MessageErreurCreationCompte.Text = "Le champ Nom complet est obligatoire.";
                 return;
             }
-
-            FakeDatabaseEmails.Add(Email.Text);
-
-            MessageBox.Show("Compte créé avec succès !");
-
-            NavigationService.Navigate(new SignUp());
-        }
-
-        private bool EmailExists()
-        {
-            return FakeDatabaseEmails.Contains(Email.Text.ToLower());
-        }
-
-        private bool IsEmailValid()
-        {
-            if (string.IsNullOrEmpty(Email.Text) || !IsValidEmailFormat())
+            if (string.IsNullOrWhiteSpace(courriel))
             {
-                MessageErreur.Text = "Le courriel est invalide.";
-                return false;
+                MessageErreurCreationCompte.Text = "Le champ Courriel est obligatoire.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(motDePasse))
+            {
+                MessageErreurCreationCompte.Text = "Le champ Mot de passe est obligatoire.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(confirmation))
+            {
+                MessageErreurCreationCompte.Text = "Le champ Confirmer mot de passe est obligatoire.";
+                return;
+            }
+            if (!courriel.Contains("@") || !courriel.Contains("."))
+            {
+                MessageErreurCreationCompte.Text = "Format de courriel invalide.";
+                return;
+            }
+            if (motDePasse.Length < 8)
+            {
+                MessageErreurCreationCompte.Text = "Le mot de passe doit contenir au moins 8 caractères.";
+                return;
+            }
+            if (motDePasse != confirmation)
+            {
+                MessageErreurCreationCompte.Text = "Les mots de passe ne correspondent pas.";
+                return;
             }
 
-            if (Email.Text.Length > 100)
+            var (succes, erreur) = await AuthService.CreerCompteAsync(nomComplet, courriel, motDePasse);
+
+            if (!succes)
             {
-                MessageErreur.Text = "Le courriel est trop long.";
-                return false;
+                MessageErreurCreationCompte.Text = erreur;
+                return;
             }
 
-            return true;
+            var loginWindow = new LoginView();
+            loginWindow.Show();
+            Window.GetWindow(this)?.Close();
         }
 
-        private bool IsPasswordValid()
+        private void MotPasse_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(MotPasse.Password))
-            {
-                MessageErreur.Text = "Le mot de passe est invalide.";
-                return false;
-            }
-
-            if (MotPasse.Password.Length > 50)
-            {
-                MessageErreur.Text = "Le mot de passe est trop long.";
-                return false;
-            }
-
-            return true;
+            CriètreMotDePasse.Visibility = Visibility.Visible;
         }
 
-        private bool IsValidEmailFormat()
+        private void MotPasse_LostFocus(object sender, RoutedEventArgs e)
         {
-            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
-            return Regex.IsMatch(Email.Text, pattern, RegexOptions.IgnoreCase);
+            CriètreMotDePasse.Visibility = Visibility.Collapsed;
         }
 
-        private void GoToSignUp_Click(object sender, RoutedEventArgs e)
+        private void MotPasse_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SignUp());
+            _criteriaViewModel.MotDePasse = MotPasse.Password;
         }
 
-        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Fonctionnalité à venir.");
-        }
+
     }
 }

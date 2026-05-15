@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Urgence_tech.ViewModels;
+﻿using System.Windows;
+using System.Windows.Controls;
+using UrgenceTech.ViewModels;
 
-namespace Urgence_tech.Views
+namespace UrgenceTech.Views
 {
     public partial class LoginView : Window
     {
@@ -16,6 +12,10 @@ namespace Urgence_tech.Views
             DataContext = new LoginViewModels();
         }
 
-        
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModels vm && sender is PasswordBox pb)
+                vm.MotDePasse = pb.Password;
+        }
     }
 }
