@@ -24,7 +24,7 @@ namespace UrgenceTech.Tests
 
             // Arrange — préparer
 
-            var motCritère = new FakeEmailValidatorEtMotDePasse();
+            var motCritère = new ClasseTestableEmailEtPassWord();
 
             // Act — exécuter
 
@@ -83,7 +83,7 @@ namespace UrgenceTech.Tests
         public void MotDePasse_Deux_Different_ValidationEchoue(string motDePasse, string confirmation, string expectedMessage)
         {
             // Arrange — préparer
-            var motDePasseConfirmation = new FakeEmailValidatorEtMotDePasse();
+            var motDePasseConfirmation = new ClasseTestableEmailEtPassWord();
 
             // Act — exécuter
             var resultat = motDePasseConfirmation.ConfiramtionMotDePasse(motDePasse, confirmation);
@@ -102,69 +102,68 @@ namespace UrgenceTech.Tests
 
 
         [Fact]
-        public async Task Creer_Compte_Deja_Existant()
+        public void Verrouillage_Compte_Cinq_Mins()
         {
 
             // Arrange — préparer
+            var service = new ClassTestableVerrouillage();
+            var utilisateur = new Utilisateur
+            {
+                DateVerrouillage = DateTime.Now.AddMinutes(-5),
+            };
 
             // Act — exécuter
 
-
+            bool resultat = service.EstVerrouille(utilisateur, DateTime.Now);
 
             // Assert — vérifier
+            //il est true qu'il a du temps restant
+            Assert.True(resultat);
+
+        }
+
+        [Fact]
+        public void Verrouillage_Compte_Seize_Mins()
+        {
+
+            // Arrange — préparer
+            var service = new ClassTestableVerrouillage();
+            var utilisateur = new Utilisateur
+            {
+                DateVerrouillage = DateTime.Now.AddMinutes(-16),
+            };
+            // Act — exécuter
+            bool resultat = service.EstVerrouille(utilisateur, DateTime.Now);
+
+            // Assert — vérifier
+            //il est false, il ne reste plus de temps restant
+            Assert.False(resultat);
 
 
         }
 
         [Fact]
-        public void Creee_Compte_Unique_ValidationReussi()
+        public void Verifier_Deverrouillage_Tentative_Egale_Zero()
         {
 
             // Arrange — préparer
-
+            var service = new ClassTestableVerrouillage();
+            var utilisateur = new Utilisateur
+            {
+                DateVerrouillage = DateTime.Now.AddMinutes(-16),
+                TentativesEchouees = 5
+            };
             // Act — exécuter
+            bool resultat = service.EstVerrouille(utilisateur, DateTime.Now);
 
             // Assert — vérifier
+            //il est false, il ne reste plus de temps restant
+            Assert.False(resultat);
+            Assert.Equal(0, utilisateur.TentativesEchouees);
 
         }
 
-        [Fact]
-        public void Verifier_Message_Erreur()
-        {
-
-            // Arrange — préparer
-
-            // Act — exécuter
-
-            // Assert — vérifier
-
-        }
-
-        public (bool isValid, string message) IsValidEmail(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                return (false, "Le champ Courriel est obligatoire.");
-
-            if (!email.Contains("@") || !email.Contains("."))
-                return (false, "Format de courriel invalide.");
-
-            return (true, null);
-        }
-
-        public string ConfiramtionMotDePasse(string motDePasse, string confirmation)
-        {
-            if (string.IsNullOrWhiteSpace(motDePasse))
-                return "Le champ Mot de passe est obligatoire.";
-
-            if (string.IsNullOrWhiteSpace(confirmation))
-                return "Le champ Confirmer est obligatoire.";
-
-            if (motDePasse != confirmation)
-                return "Les mots de passe ne correspondent pas.";
-
-            return null;
-        }
-
+     
     }
 
 }

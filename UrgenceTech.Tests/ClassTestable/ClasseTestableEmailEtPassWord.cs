@@ -1,6 +1,7 @@
-﻿namespace UrgenceTech.Tests
+﻿namespace UrgenceTech.Tests.ClassTestable
 {
-    public class FakeEmailValidatorEtMotDePasse
+    // Le code vient de cette class sont dans le SignUp.xaml.cs
+    public class ClasseTestableEmailEtPassWord
     {
         public (bool isValid, string message) IsValidEmail(string email)
         {
