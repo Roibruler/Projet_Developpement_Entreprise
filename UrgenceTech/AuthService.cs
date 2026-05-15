@@ -49,5 +49,15 @@ namespace UrgenceTech
 
             return Task.FromResult((true, string.Empty));
         }
+
+        public static string HasherMotDePasse(string motDePasse)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(motDePasse);
+        }
+
+        public static bool VerifierMotDePasse(string motDePasse, string hash)
+        {
+            return BCrypt.Net.BCrypt.Verify(motDePasse, hash);
+        }
     }
 }
