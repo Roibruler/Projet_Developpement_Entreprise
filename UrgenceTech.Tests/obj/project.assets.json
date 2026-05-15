@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    "net8.0-windows7.0": {
+    "net8.0-windows": {
       "BCrypt.Net-Next/4.0.3": {
         "type": "package",
         "compile": {
@@ -124,6 +124,22 @@
         },
         "runtime": {
           "lib/netstandard2.0/_._": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/8.0.25": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.25"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/8.0.25": {
@@ -1268,6 +1284,21 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.InMemory/8.0.25": {
+      "sha512": "1+1BiW/Kf+J3GxTCgkwcB+RCCJDkhGUSurB5jRSIL2De4kFWgapsJdhuiY9e2zgJevaVH8FxYABX6vRXBwrVwg==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/8.0.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.8.0.25.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Relational/8.0.25": {
       "sha512": "/6S+I5PvmlzDeLMCXZGCXmnUNiJdLyucUrnwkItNhNRZB8ftVYXdyM0omNwm3UDvRSQVMnb3e5s7+YusLvvYeg==",
       "type": "package",
@@ -2274,7 +2305,8 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": [
+    "net8.0-windows": [
+      "Microsoft.EntityFrameworkCore.InMemory >= 8.0.25",
       "Microsoft.NET.Test.Sdk >= 18.5.1",
       "Moq >= 4.20.72",
       "UrgenceTech >= 1.0.0",
@@ -2284,24 +2316,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HBadr\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\diego\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
       "projectName": "UrgenceTech.Tests",
-      "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
-      "packagesPath": "C:\\Users\\HBadr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech.Tests\\obj\\",
+      "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\UrgenceTech.Tests.csproj",
+      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech.Tests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\HBadr\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2313,11 +2340,12 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj": {
-              "projectPath": "C:\\Users\\HBadr\\OneDrive\\Bureau\\Dev-app\\UrgenceTech\\UrgenceTech.csproj"
+            "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj": {
+              "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\RealDevFinal\\UrgenceTech\\UrgenceTech.csproj"
             }
           }
         }
@@ -2332,12 +2360,17 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
-      "net8.0-windows7.0": {
+      "net8.0-windows": {
+        "framework": "net8.0-windows7.0",
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": {
+            "target": "Package",
+            "version": "[8.0.25, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[18.5.1, )"
@@ -2378,7 +2411,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -2387,10 +2420,10 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "UrgenceTech.Tests dépend de xunit.runner.visualstudio (>= 2.9.3) mais xunit.runner.visualstudio 2.9.3 est introuvable. xunit.runner.visualstudio 3.0.0 a été résolu à la place.",
+      "message": "UrgenceTech.Tests depends on xunit.runner.visualstudio (>= 2.9.3) but xunit.runner.visualstudio 2.9.3 was not found. xunit.runner.visualstudio 3.0.0 was resolved instead.",
       "libraryId": "xunit.runner.visualstudio",
       "targetGraphs": [
-        "net8.0-windows7.0"
+        "net8.0-windows"
       ]
     }
   ]
