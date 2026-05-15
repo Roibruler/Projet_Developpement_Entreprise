@@ -1,8 +1,7 @@
-﻿/UrgenceTech/.vs/
-/UrgenceTech/bin/Debug/net8.0-windows
-/UrgenceTech/obj
-
-.vs/
-UrgenceTech/.vs/
-/UrgenceTech/.vs
-/UrgenceTech/.vs/UrgenceTech.slnx/DesignTimeBuild/.dtbcache.v2
+﻿.vs/
+*.user
+/UrgenceTech/bin/
+/UrgenceTech/obj/
+*.db
+*.db-shm
+*.db-wal
