@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using UrgenceTech.Models;
@@ -7,7 +6,6 @@ using UrgenceTech.Repositories;
 
 namespace UrgenceTech.ViewModels
 {
-
     public partial class UrgenceViewModel : ObservableObject
     {
         private readonly IUrgenceRepository _urgenceRepo;
@@ -28,13 +26,14 @@ namespace UrgenceTech.ViewModels
 
         [ObservableProperty]
         private string messageVue = string.Empty;
+
         [RelayCommand]
         private void ChargerUrgencesEnCours()
         {
             UrgencesEnCours.Clear();
             MessageVue = string.Empty;
 
-            var liste = _urgenceRepo.ObtenirUrgencesEnCours();
+            var liste = _urgenceRepo.ObtenirToutesUrgences();
 
             foreach (var u in liste)
                 UrgencesEnCours.Add(u);
@@ -44,13 +43,13 @@ namespace UrgenceTech.ViewModels
         }
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(CreerUrgenceCommand))]
         private string titre = string.Empty;
 
         [ObservableProperty]
         private string description = string.Empty;
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(CreerUrgenceCommand))]
         private string prioriteSelectionnee = "Moyen";
 
         [ObservableProperty]
@@ -58,12 +57,12 @@ namespace UrgenceTech.ViewModels
 
         [ObservableProperty]
         private bool creationReussie;
+
         public static IReadOnlyList<string> Priorites { get; } =
             new[] { "Faible", "Moyen", "Élevé", "Critique" };
 
         private bool PeutCreer() =>
-            !string.IsNullOrWhiteSpace(Titre) &&
-            AuthService.UtilisateurConnecte != null;
+            !string.IsNullOrWhiteSpace(Titre);
 
         [RelayCommand(CanExecute = nameof(PeutCreer))]
         private void CreerUrgence()
@@ -77,17 +76,13 @@ namespace UrgenceTech.ViewModels
                 return;
             }
 
-            if (AuthService.UtilisateurConnecte == null)
-            {
-                MessageCreation = "Vous devez être connecté pour créer une urgence.";
-                return;
-            }
+            int utilisateurId = AuthService.UtilisateurConnecte?.ID ?? 1;
 
             var urgence = _urgenceRepo.CreerUrgence(
                 titre: Titre.Trim(),
                 description: Description.Trim(),
                 priorite: PrioriteSelectionnee,
-                utilisateurId: AuthService.UtilisateurConnecte.ID
+                utilisateurId: utilisateurId
             );
 
             if (urgence == null)
@@ -96,7 +91,7 @@ namespace UrgenceTech.ViewModels
                 return;
             }
 
-            MessageCreation = $"Urgence « {urgence.Titre} » créée avec succès (#{urgence.ID}).";
+            MessageCreation = $"Urgence '{urgence.Titre}' créée avec succès (#{urgence.ID}).";
             CreationReussie = true;
             Titre = string.Empty;
             Description = string.Empty;

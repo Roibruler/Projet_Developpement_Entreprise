@@ -1,18 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using UrgenceTech.Data;
+using UrgenceTech.ViewModels;
 
 namespace UrgenceTech.Views
 {
-
     internal partial class SignIn : Page
     {
-        
         private const int MaxTentatives = 5;
         private const int DureeVerrouillage = 15;
 
@@ -22,12 +20,10 @@ namespace UrgenceTech.Views
         {
             InitializeComponent();
             _context = context;
-
         }
 
         private async void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
-            
             ErreurBorder.Visibility = Visibility.Collapsed;
             MessageErreur.Text = string.Empty;
 
@@ -38,7 +34,6 @@ namespace UrgenceTech.Views
 
             try
             {
-                // Timer pour afficher que le spinner fonctionne vous pouvez le delete si vous voulez plus tard. ༼ つ ◕_◕ ༽つ
                 await Task.Delay(3000);
 
                 var utilisateur = await _context.Utilisateurs
@@ -68,7 +63,7 @@ namespace UrgenceTech.Views
                     }
                 }
 
-                if (utilisateur.MotDePasse != MotPasse.Password)
+                if (!AuthService.VerifierMotDePasse(MotPasse.Password, utilisateur.MotDePasse!))
                 {
                     utilisateur.TentativesEchouees++;
 
@@ -90,7 +85,17 @@ namespace UrgenceTech.Views
                 utilisateur.DateVerrouillage = null;
                 await _context.SaveChangesAsync();
 
-   
+                AuthService.SeConnecter(utilisateur.Courriel!, MotPasse.Password);
+
+                var sessionManager = new SessionManager();
+                sessionManager.StartSession();
+
+                var sessionManagerViewModel = new SessionManagerViewModel(sessionManager);
+
+                var menu = new MenuView(utilisateur, sessionManagerViewModel);
+                menu.Show();
+
+                Window.GetWindow(this)?.Close();
             }
             finally
             {
@@ -103,25 +108,18 @@ namespace UrgenceTech.Views
             NavigationService.Navigate(new SignUp());
         }
 
-        // ---------------------------------------------------------------
-        // Affiche l'overlay spinner et désactive le bouton de connexion
-        // ---------------------------------------------------------------
         private void DemarrerChargement()
         {
             ChargementOverlay.Visibility = Visibility.Visible;
             SignInBtn.IsEnabled = false;
         }
 
-        // ---------------------------------------------------------------
-        // Masque l'overlay spinner et réactive le bouton de connexion
-        // ---------------------------------------------------------------
         private void ArreterChargement()
         {
             ChargementOverlay.Visibility = Visibility.Collapsed;
             SignInBtn.IsEnabled = true;
         }
 
-        // Affiche la boîte rouge avec le message d'erreur
         private void AfficherErreur(string message)
         {
             MessageErreur.Text = message;

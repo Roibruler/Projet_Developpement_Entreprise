@@ -1,116 +1,117 @@
 ﻿<UserControl x:Class="UrgenceTech.Views.UrgenceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UrgenceTech.Views"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#F5F5F5" Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-        <TextBlock Grid.Row="0"
-                   Text="Gestion des urgences"
-                   FontSize="26"
-                   FontWeight="Bold"
-                   Foreground="#1976D2"
-                   Margin="0,0,0,20"/>
+	<Grid Background="#F5F5F5" Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <Border Grid.Row="1"
+		<!-- Titre + Bouton créer -->
+		<Grid Grid.Row="0" Margin="0,0,0,20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0"
+                       Text="Gestion des urgences"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#1976D2"
+                       VerticalAlignment="Center"/>
+
+			<Button Grid.Column="1"
+                    Content="+ Créer une urgence"
+                    Click="OuvrirCreerUrgence_Click"
+                    Height="38" Padding="16,0"
+                    FontSize="13" FontWeight="Bold"
+                    Background="#D32F2F" Foreground="White"
+                    BorderThickness="0" Cursor="Hand"/>
+		</Grid>
+
+		<!-- Filtres -->
+		<Border Grid.Row="1"
                 Background="White"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="8"
                 Padding="15"
                 Margin="0,0,0,15">
-            <StackPanel Orientation="Horizontal">
- 
-                <TextBox Text="{Binding TexteRecherche, UpdateSourceTrigger=PropertyChanged}"
-                         Width="200"
-                         Height="32"
-                         Padding="8,4"
-                         Margin="0,0,15,0"
-                         VerticalContentAlignment="Center"/>
+			<StackPanel Orientation="Horizontal">
 
-                <TextBlock Text="Statut :"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0"/>
-                <ComboBox SelectedItem="{Binding FiltreStatut}"
-                          Width="120"
-                          Height="32"
-                          Margin="0,0,15,0">
-                    <sys:String>Tous</sys:String>
-                    <sys:String>Ouverte</sys:String>
-                    <sys:String>En cours</sys:String>
-                    <sys:String>Résolue</sys:String>
-                </ComboBox>
+				<TextBox Text="{Binding TexteRecherche, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200" Height="32" Padding="8,4"
+                         Margin="0,0,15,0" VerticalContentAlignment="Center"/>
 
-                <TextBlock Text="Priorité :"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0"/>
-                <ComboBox SelectedItem="{Binding FiltrePriorite}"
-                          Width="120"
-                          Height="32">
-                    <sys:String>Tous</sys:String>
-                    <sys:String>Basse</sys:String>
-                    <sys:String>Moyenne</sys:String>
-                    <sys:String>Haute</sys:String>
-                    <sys:String>Critique</sys:String>
-                </ComboBox>
+				<TextBlock Text="Statut :" VerticalAlignment="Center" Margin="0,0,8,0"/>
+				<ComboBox SelectedItem="{Binding FiltreStatut}" Width="120" Height="32" Margin="0,0,15,0">
+					<sys:String>Tous</sys:String>
+					<sys:String>Ouverte</sys:String>
+					<sys:String>En cours</sys:String>
+					<sys:String>Résolue</sys:String>
+				</ComboBox>
 
-            </StackPanel>
-        </Border>
+				<TextBlock Text="Priorité :" VerticalAlignment="Center" Margin="0,0,8,0"/>
+				<ComboBox SelectedItem="{Binding FiltrePriorite}" Width="120" Height="32">
+					<sys:String>Tous</sys:String>
+					<sys:String>Basse</sys:String>
+					<sys:String>Moyenne</sys:String>
+					<sys:String>Haute</sys:String>
+					<sys:String>Critique</sys:String>
+				</ComboBox>
 
-        <Border Grid.Row="2"
+			</StackPanel>
+		</Border>
+
+		<!-- Liste des urgences -->
+		<Border Grid.Row="2"
                 Background="White"
                 BorderBrush="#E0E0E0"
                 BorderThickness="1"
                 CornerRadius="8"
                 Padding="15">
-            <Grid>
-                <ListView ItemsSource="{Binding UrgencesFiltrees}"
+			<Grid>
+				<ListView ItemsSource="{Binding UrgencesEnCours}"
                           BorderThickness="0"
                           Background="Transparent">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="ID" Width="60"
+					<ListView.View>
+						<GridView>
+							<GridViewColumn Header="ID" Width="60"
                                             DisplayMemberBinding="{Binding ID}"/>
-                            <GridViewColumn Header="Titre" Width="220"
+							<GridViewColumn Header="Titre" Width="220"
                                             DisplayMemberBinding="{Binding Titre}"/>
-                            <GridViewColumn Header="Priorité" Width="100"
+							<GridViewColumn Header="Priorité" Width="100"
                                             DisplayMemberBinding="{Binding Priorite}"/>
-                            <GridViewColumn Header="Statut" Width="100"
+							<GridViewColumn Header="Statut" Width="100"
                                             DisplayMemberBinding="{Binding Statut}"/>
-                            <GridViewColumn Header="Date" Width="150"
+							<GridViewColumn Header="Date" Width="150"
                                             DisplayMemberBinding="{Binding DateCreation, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+						</GridView>
+					</ListView.View>
+				</ListView>
 
-                <TextBlock Text="Aucune urgence enregistrée."
-                           FontSize="14"
-                           Foreground="Gray"
+				<TextBlock Text="Aucune urgence enregistrée."
+                           FontSize="14" Foreground="Gray"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding UrgencesFiltrees.Count}" Value="0">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
+					<TextBlock.Style>
+						<Style TargetType="TextBlock">
+							<Setter Property="Visibility" Value="Collapsed"/>
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding UrgencesEnCours.Count}" Value="0">
+									<Setter Property="Visibility" Value="Visible"/>
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
 
-            </Grid>
-        </Border>
+			</Grid>
+		</Border>
 
-    </Grid>
+	</Grid>
 </UserControl>
