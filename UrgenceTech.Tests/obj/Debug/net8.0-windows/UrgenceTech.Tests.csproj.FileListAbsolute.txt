@@ -293,3 +293,14 @@ C:\Users\adamr\OneDrive\Bureau\Développement_Entreprise\Roibruler\Projet_Develo
 C:\Users\adamr\OneDrive\Bureau\Développement_Entreprise\Roibruler\Projet_Developpement_Entreprise\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceT.D3B584EE.Up2Date
 C:\Users\adamr\OneDrive\Bureau\Développement_Entreprise\Roibruler\Projet_Developpement_Entreprise\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.genruntimeconfig.cache
 C:\Users\adamr\OneDrive\Bureau\Développement_Entreprise\Roibruler\Projet_Developpement_Entreprise\UrgenceTech.Tests\obj\Debug\net8.0-windows\ref\UrgenceTech.Tests.dll
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\bin\Debug\net8.0-windows\.msCoverageSourceRootsMapping_UrgenceTech.Tests
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\bin\Debug\net8.0-windows\CoverletSourceRootsMapping_UrgenceTech.Tests
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.csproj.AssemblyReference.cache
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.AssemblyInfoInputs.cache
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.AssemblyInfo.cs
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.csproj.CoreCompileInputs.cache
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.sourcelink.json
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.dll
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\refint\UrgenceTech.Tests.dll
+D:\DeveloppementApplicationEntreprise\UrgenceTech\UrgenceTech.Tests\obj\Debug\net8.0-windows\UrgenceTech.Tests.pdb

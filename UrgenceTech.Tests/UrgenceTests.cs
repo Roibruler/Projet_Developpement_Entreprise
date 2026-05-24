@@ -196,5 +196,105 @@ namespace UrgenceTech.Tests
             Assert.False(succes);
             Assert.Equal("Ce courriel est deja utilise.", message);
         }
+
+
+        [Fact]
+        public void IsValidEmail_ValideFormat_Vrai()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var (isValid, message) = valid.IsValidEmail("emile@yahoo.com");
+
+            Assert.True(isValid);
+            Assert.Null(message);
+        }
+
+        [Fact]
+        public void IsValidEmail_Vide_Erreur()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var (isValid, message) = valid.IsValidEmail("");
+
+            Assert.False(isValid);
+            Assert.Equal("Besoin obligatoirement du champ courriel", message);
+        }
+
+        [Fact]
+        public void IsValidEmail_mauvaiseEcriture_Erreur()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var (isValid, message) = valid.IsValidEmail("emile");
+
+            Assert.False(isValid);
+            Assert.Equal("Mauvais format");
+        }
+
+
+        [Fact]
+        public void IsPasswordValide_vide_Erreur()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var message = valid.ConfiramtionMotDePasse("", 123);
+
+            Assert.Equal("mot de paase doit être rempli obligatoirement", message);
+        }
+
+        [Fact]
+        public void IsPasswordValide_videConfirmation_Erreur()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var message = valid.ConfiramtionMotDePasse(123, "");
+
+            Assert.Equal("confirmer doit être rempli obligatoirement", message);
+        }
+
+        [Fact]
+        public void IsPasswordValide_different_Erreur()
+        {
+            var valid = new ClasseTestableEmailEtPassWord();
+
+            var message = valid.ConfiramtionMotDePasse(123, 456);
+
+            Assert.Equal("C'est pas le même mot de passe", message);
+        }
+
+        [Fact]
+        public void IsPasswordValide_same_null()
+        {
+            var valide = new ClasseTestableEmailEtPassWord();
+
+            var message = valide.ConfiramtionMotDePasse(1234, 1234);
+
+            Assert.Null(message);
+        }
+
+        [Fact]
+        public void isConnexion_Desactiver_erreu()
+        {
+            var repo = new FakeAuthRepository();
+            AuthService.SetRepository(repo);
+
+            var user = repo.CreerCompte("Emile Tardif", "emile@yahoo.com", "Banana13!");
+            user.Status = false;
+
+            var (succes, message) = AuthService.SeConnecterAsync("emile@yahoo.ca", "Banana13!").Result;
+
+            Assert.False(succes);
+            Assert.Equal("Mauvais identifiants", message);
+        }
+
+        [Fact]
+        public void IsPasswordValide_same_null()
+        {
+            var valide = new ClasseTestableEmailEtPassWord();
+
+            var message = valide.ConfiramtionMotDePasse(1234, 1234);
+
+            Assert.Null(message);
+        }
     }
 }

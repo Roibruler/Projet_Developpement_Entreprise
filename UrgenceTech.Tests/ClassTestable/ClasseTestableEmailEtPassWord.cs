@@ -1,4 +1,6 @@
-﻿namespace UrgenceTech.Tests.ClassTestable
+﻿using UrgenceTech.Tests.Fakes;
+
+namespace UrgenceTech.Tests.ClassTestable
 {
     // Le code vient de cette class sont dans le SignUp.xaml.cs
     public class ClasseTestableEmailEtPassWord
@@ -27,5 +29,6 @@
 
             return null;
         }
+
     }
 }

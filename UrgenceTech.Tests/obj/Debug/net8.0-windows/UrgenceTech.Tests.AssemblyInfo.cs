@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UrgenceTech.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6e535a4cdc673be2f843d2d2592efd3022aff85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f59b0fde3fb872959b822d89f013e17d43d003f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("UrgenceTech.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UrgenceTech.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,8 +11,8 @@ using UrgenceTech.Data;
 namespace UrgenceTech.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260503015510_AjouterUrgences")]
-    partial class AjouterUrgences
+    [Migration("20260524070645_RecreateAll")]
+    partial class RecreateAll
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,16 +29,25 @@ namespace UrgenceTech.Migrations
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime?>("DateMiseAJour")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Priorite")
                         .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Statut")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("TechnicienAssigneID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Titre")
                         .IsRequired()
@@ -49,6 +58,8 @@ namespace UrgenceTech.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("TechnicienAssigneID");
 
                     b.HasIndex("UtilisateurID");
 
@@ -66,6 +77,9 @@ namespace UrgenceTech.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime?>("DateVerrouillage")
                         .HasColumnType("TEXT");
 
@@ -80,7 +94,6 @@ namespace UrgenceTech.Migrations
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
@@ -98,7 +111,8 @@ namespace UrgenceTech.Migrations
                         {
                             ID = 1,
                             Courriel = "admin@urgencetech.com",
-                            MotDePasse = "$2a$11$I5vrX98gW7JZPzjW4GdxBuzCFr1dsXOf8JhLgiV05EkMtaJthFln6",
+                            DateCreation = new DateTime(2026, 5, 24, 3, 6, 45, 198, DateTimeKind.Local).AddTicks(9086),
+                            MotDePasse = "$2a$11$N2CLmpYNCVCkmUBB9x3vgeDg0cozjVl03HbSyGRCKahlT1hlUGA6y",
                             NomComplet = "Admin Test",
                             Role = "Administrateur",
                             Status = true,
@@ -108,11 +122,18 @@ namespace UrgenceTech.Migrations
 
             modelBuilder.Entity("UrgenceTech.Models.Urgence", b =>
                 {
+                    b.HasOne("UrgenceTech.Models.Utilisateur", "TechnicienAssigne")
+                        .WithMany()
+                        .HasForeignKey("TechnicienAssigneID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("UrgenceTech.Models.Utilisateur", "Utilisateur")
                         .WithMany()
                         .HasForeignKey("UtilisateurID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("TechnicienAssigne");
 
                     b.Navigation("Utilisateur");
                 });

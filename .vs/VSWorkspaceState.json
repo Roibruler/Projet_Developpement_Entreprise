@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\UrgenceTech",
-    "\\UrgenceTech\\bin",
-    "\\UrgenceTech\\Converters"
+    "\\UrgenceTech\\Data",
+    "\\UrgenceTech\\Models",
+    "\\UrgenceTech\\ViewModels",
+    "\\UrgenceTech\\Views"
   ],
+  "SelectedNode": "\\UrgenceTech\\Data\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }
