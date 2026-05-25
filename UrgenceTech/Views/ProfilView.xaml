@@ -32,10 +32,10 @@
                            Margin="0,0,0,20"/>
 
                 <TextBlock Text="Nom complet" FontWeight="Bold" Foreground="#546E7A" Margin="0,0,0,5"/>
-                <TextBlock Text="{Binding NomComplet}" FontSize="15" Margin="0,0,0,20"/>
+                <TextBox Text="{Binding NomComplet, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Margin="0,0,0,20"/>
 
                 <TextBlock Text="Courriel" FontWeight="Bold" Foreground="#546E7A" Margin="0,0,0,5"/>
-                <TextBlock Text="{Binding Courriel}" FontSize="15" Margin="0,0,0,20"/>
+                <TextBox Text="{Binding Courriel, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Margin="0,0,0,20"/>
 
                 <TextBlock Text="Rôle" FontWeight="Bold" Foreground="#546E7A" Margin="0,0,0,5"/>
                 <Border Background="#E3F2FD" CornerRadius="4" Padding="8,4" HorizontalAlignment="Left" Margin="0,0,0,20">
@@ -45,6 +45,9 @@
                 <TextBlock Text="Membre depuis" FontWeight="Bold" Foreground="#546E7A" Margin="0,0,0,5"/>
                 <TextBlock Text="{Binding DateCreation}" FontSize="15"/>
 
+                <Button Content="Sauvegarder" Width="150" Height="35" Background="#1976d2" Foreground="White" FontWeight="Bold" Command="{Binding SauvegarderCommand}" Margin="0,10,0,0"/>
+
+                <TextBlock Text="{Binding Message}" FontSize="14" Foreground="Green" Margin="0,10,0,0"/>
             </StackPanel>
         </Border>
 

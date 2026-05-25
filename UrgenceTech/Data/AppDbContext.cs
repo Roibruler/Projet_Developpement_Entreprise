@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.IO;
 using UrgenceTech.Models;
 
 namespace UrgenceTech.Data
@@ -16,7 +17,8 @@ namespace UrgenceTech.Data
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlite("Data Source=urgencetech.db");
+                var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "urgencetech.db");
+                options.UseSqlite($"Data Source={dbPath}");
             }
         }
 
@@ -32,7 +34,9 @@ namespace UrgenceTech.Data
                     Courriel = "admin@urgencetech.com",
                     MotDePasse = motDePasseHash,
                     Role = "Administrateur",
-                    Status = true
+                    Status = true,
+                    TentativesEchouees = 0,
+                    DateCreation = DateTime.Now,
                 }
             );
 

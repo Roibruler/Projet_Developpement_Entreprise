@@ -38,7 +38,7 @@ namespace UrgenceTech.Repositories
             {
                 NomComplet = nomComplet.Trim(),
                 Courriel = courriel.Trim().ToLower(),
-                MotDePasse = motDePasse,
+                MotDePasse = BCrypt.Net.BCrypt.HashPassword(motDePasse),
                 Role = role,
                 Status = true
             };
@@ -62,11 +62,12 @@ namespace UrgenceTech.Repositories
             var utilisateur = context.Utilisateurs
                 .FirstOrDefault(u =>
                     u.Courriel!.ToLower() == courriel.ToLower() &&
-                    u.MotDePasse == motDePasse &&
                     u.Status == true);
 
             if (utilisateur == null)
                 return false;
+
+            bool motDePasseValide = BCrypt.Net.BCrypt.Verify(motDePasse, utilisateur.MotDePasse);
 
             _utilisateurConnecte = utilisateur;
 
@@ -120,5 +121,24 @@ namespace UrgenceTech.Repositories
             Properties.Settings.Default.CourrielSession = string.Empty;
             Properties.Settings.Default.Save();
         }
+
+        public static bool CourrielIsExist(string courriel)
+        {
+            using var context = new AppDbContext();
+            return context.Utilisateurs.Any(u => u.Courriel == courriel);
+        }
+
+        public static void UpdateUtilisateur(Utilisateur utilisateur)
+        {
+            using var context = new AppDbContext();
+
+            var user = context.Utilisateurs.First(u => u.ID == utilisateur.ID);
+
+            user.NomComplet = utilisateur.NomComplet;
+            user.Courriel = utilisateur.Courriel;
+
+            context.SaveChanges();
+        }
+
     }
 }

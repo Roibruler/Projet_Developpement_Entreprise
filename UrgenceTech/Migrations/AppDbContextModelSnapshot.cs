@@ -108,8 +108,8 @@ namespace UrgenceTech.Migrations
                         {
                             ID = 1,
                             Courriel = "admin@urgencetech.com",
-                            DateCreation = new DateTime(2026, 5, 22, 22, 23, 13, 944, DateTimeKind.Local).AddTicks(8030),
-                            MotDePasse = "$2a$11$eIY47iOh03dp4Dr2uMg66OF4lVnD.6mIH136WaNXbvgYHfk/0vOoq",
+                            DateCreation = new DateTime(2026, 5, 24, 3, 6, 45, 198, DateTimeKind.Local).AddTicks(9086),
+                            MotDePasse = "$2a$11$N2CLmpYNCVCkmUBB9x3vgeDg0cozjVl03HbSyGRCKahlT1hlUGA6y",
                             NomComplet = "Admin Test",
                             Role = "Administrateur",
                             Status = true,
